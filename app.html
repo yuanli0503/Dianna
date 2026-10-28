@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Basely 基线 · App 原型</title>
+    <meta name="description" content="基线 Basely —— 一款把日常开销劈成两层的辅助记账 App。为生活付费，为热爱认账。" />
+    <link rel="icon" href="assets/img/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/img/app-icon-180.png" />
+    <link rel="stylesheet" href="assets/css/tokens.css?v=13" />
+    <link rel="stylesheet" href="assets/css/app.css?v=13" />
+  </head>
+  <body class="app-page">
+    <!-- ============================== icon sprite ============================== -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-list" viewBox="0 0 24 24"><path d="M7 6h13M7 12h13M7 18h13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="4" cy="6" r="1.2" fill="currentColor"/><circle cx="4" cy="12" r="1.2" fill="currentColor"/><circle cx="4" cy="18" r="1.2" fill="currentColor"/></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+        <symbol id="i-chart" viewBox="0 0 24 24"><path d="M5 20V11M12 20V5M19 20v-6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4.8 20c1.1-3.6 3.8-5.4 7.2-5.4s6.1 1.8 7.2 5.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+        <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6.5 9.5a5.5 5.5 0 0 1 11 0c0 4 1.5 5.5 1.5 5.5H5s1.5-1.5 1.5-5.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 18a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+        <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 3.5v2M12 18.5v2M4.6 7.7l1.7 1M17.7 15.3l1.7 1M4.6 16.3l1.7-1M17.7 8.7l1.7-1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+        <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m5 9 7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="i-backspace" viewBox="0 0 24 24"><path d="M9 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-6-7 6-7Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m12 9 5 6M17 9l-5 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+        <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-5.5 16-3.2-6.4L4 12Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 4 2.4 5 5.6.7-4 3.9 1 5.4-5-2.7-5 2.7 1-5.4-4-3.9L9.6 9 12 4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="i-pen" viewBox="0 0 24 24"><path d="M15.5 4.5 19.5 8.5 8 20H4v-4L15.5 4.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+        <symbol id="i-pie" viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 0 8 8h-8V4Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3.2A8 8 0 0 1 20.8 10H14V3.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+        <symbol id="i-bars" viewBox="0 0 24 24"><rect x="4" y="11" width="4" height="9" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="10" y="5" width="4" height="15" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="16" y="14" width="4" height="6" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+        <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-9.2A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7 2.8C19 15.6 12 20 12 20Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+        <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="1" fill="currentColor"/></symbol>
+        <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3.5" y="6" width="17" height="13" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 10h17" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="16.5" cy="14.5" r="1.2" fill="currentColor"/></symbol>
+        <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3.5 13.5 9l5.5 1.5-5.5 1.5L12 17.5 10.5 12 5 10.5 10.5 9 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.5 19 6v6c0 4.2-3 7-7 8.5C9 19 6 16.2 6 12V6l6-2.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m9.2 12 2 2 3.6-3.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-share" viewBox="0 0 24 24"><circle cx="17" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="7" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m9.2 10.8 5.6-3.4M9.2 13.2l5.6 3.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+        <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M9.6 9.6A2.4 2.4 0 0 1 12 8c1.4 0 2.4.9 2.4 2.2 0 1.6-2.4 1.7-2.4 3.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="16.6" r="1" fill="currentColor"/></symbol>
+        <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="8.2" r="1.1" fill="currentColor"/></symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8.5 10V8a3.5 3.5 0 0 1 7 0v2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+        <symbol id="i-logout" viewBox="0 0 24 24"><path d="M14 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M17 8.5 20.5 12 17 15.5M11 12h9.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 4h8v4a4 4 0 0 1-8 0V4Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 5H5.5v1.5A3.5 3.5 0 0 0 9 10M16 5h2.5v1.5A3.5 3.5 0 0 1 15 10M12 12v5M8.5 20h7l-.8-2.5h-5.4L8.5 20Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3s5 4 5 9a5 5 0 0 1-10 0c0-2 1-3.5 2-4.5 0 2 1 3 2 3s1-4 1-7.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+        <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.5v9M9.5 10h4a1.8 1.8 0 0 1 0 3.5h-4M9.5 13.5h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+        <symbol id="i-gift" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4 13h16M12 9v11" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 9C10 9 8 8.2 8 6.5A2 2 0 0 1 12 6a2 2 0 0 1 4 .5C16 8.2 14 9 12 9Z" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+        <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V6M6.5 11.5 12 6l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="4" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="4" y="13" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="13" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+        <symbol id="i-template" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4 9h16M9 9v11" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+        <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="6" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="18" cy="12" r="1.6" fill="currentColor"/></symbol>
+        <symbol id="i-jar" viewBox="0 0 24 24"><path d="M7 7h10l1 3v9a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V10l1-3Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M6 13h12" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M9 4h6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+        <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 12a7.5 7.5 0 0 1-7.5 7.5H8L4 22v-5.4A7.5 7.5 0 0 1 12.5 4.5 7.5 7.5 0 0 1 20 12Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+      </defs>
+    </svg>
+
+    <div class="stage-wrap">
+      <div class="stage" id="stage">
+      <aside class="stage-side">
+        <img class="side-logo" src="assets/img/logo-lockup.png" alt="basely" />
+        <h1>把账单劈成两层<br />看清钱去了哪。</h1>
+        <p>
+          这是一份可直接操作的产品原型：记一笔、改判归属、看周月分析、跟平平聊聊，数字会实时更新。
+        </p>
+        <ul class="side-list">
+          <li><b>记账</b><span>复用数据自动归类，只让你确认「这笔姓什么」</span></li>
+          <li><b>分析</b><span>刚需 / 伪刚需两层结构，溢价率一页看清</span></li>
+          <li><b>心愿</b><span>首页就能看到存钱罐，点进去慢慢存</span></li>
+          <li><b>平平</b><span>每一页右下角都在，点一下就能聊</span></li>
+        </ul>
+        <a class="side-link" href="index.html">
+          返回品牌站
+          <svg><use href="#i-chevron-right" /></svg>
+        </a>
+      </aside>
+
+      <div class="phone">
+        <div class="device">
+          <div class="statusbar">
+            <span>9:41</span>
+            <span class="sb-right">
+              <svg viewBox="0 0 20 14" fill="none"><path d="M1 10h2v3H1zM5.5 7.5h2V13h-2zM10 5h2v8h-2zM14.5 2h2v11h-2z" fill="currentColor"/></svg>
+              <svg viewBox="0 0 18 14" fill="none"><path d="M9 12.6 1 5.2A11.5 11.5 0 0 1 17 5.2L9 12.6Z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="11" r="1" fill="currentColor"/></svg>
+              <span class="battery"></span>
+            </span>
+          </div>
+
+          <div class="app" id="app" data-view="home">
+            <div class="views" id="views">
+              <!-- ============================ 首页 ============================ -->
+              <section class="view active" id="v-home" data-view="home">
+                <div class="app-head">
+                  <img class="logo" src="assets/img/logo-lockup.png" alt="basely" />
+                  <div class="head-actions">
+                    <button class="icon-btn" data-act="toast" data-msg="暂无新提醒，平平会替你盯着预算 🙂">
+                      <svg><use href="#i-bell" /></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="greet">
+                  <svg class="sun"><use href="#i-sun" /></svg>
+                  <span id="greet-text">早上好！今天也要好好记账呀～</span>
+                </div>
+
+                <div class="pad">
+                  <div class="card total-card" data-go="charts">
+                    <div class="total-top">
+                      <div>
+                        <div class="label">本月支出 <svg width="12" height="12" style="color: var(--ink-4)"><use href="#i-chevron-right" /></svg></div>
+                        <div class="total-amount"><span class="cur">¥</span><span class="v" id="home-total">2,000</span></div>
+                      </div>
+                      <span class="chip green" id="home-delta">较上月 ↓12%</span>
+                    </div>
+                    <div class="total-meta" id="home-meta"></div>
+                    <div class="stack">
+                      <div class="stack-bar"><i class="need" style="width: 74.7%"></i><i class="want" style="width: 25.3%"></i></div>
+                      <div class="legend" id="home-legend"></div>
+                    </div>
+                  </div>
+
+                  <!-- 心愿存钱罐（首页快捷模块） -->
+                  <div class="sec-head">
+                    <h3>心愿存钱罐</h3>
+                    <button class="more" data-go="wish">去存一笔 <svg><use href="#i-chevron-right" /></svg></button>
+                  </div>
+                  <button class="card wish-home" data-go="wish" id="wish-home"></button>
+
+                  <div class="sec-head">
+                    <h3>分类预算</h3>
+                    <button class="more" data-go="budget">查看全部 <svg><use href="#i-chevron-right" /></svg></button>
+                  </div>
+                  <div class="card budget-card" id="home-budgets"></div>
+
+                  <div class="card ai-card" style="margin-top: 12px">
+                    <div class="ava"><img src="assets/img/avatar-flat.png" alt="" /></div>
+                    <div class="txt">
+                      <div class="t">平平 · 你的 AI 记账助手</div>
+                      <div class="d" id="ai-tip">本月餐饮支出比基线高 33% 哦～ 继续加油！</div>
+                    </div>
+                    <button class="go" data-go="ai">去看看</button>
+                  </div>
+
+                  <div class="sec-head">
+                    <h3>今日账单</h3>
+                    <button class="more" data-go="records">查看全部 <svg><use href="#i-chevron-right" /></svg></button>
+                  </div>
+                  <div class="card" style="padding: 2px 16px" id="home-today"></div>
+                </div>
+              </section>
+
+              <!-- ============================ 账单 ============================ -->
+              <section class="view" id="v-records" data-view="records">
+                <div class="nav-head">
+                  <button class="nav-btn" data-act="toast" data-msg="按类目 / 金额 / 时间筛选"><svg><use href="#i-search" /></svg></button>
+                  <div class="title">账单详情</div>
+                  <button class="nav-btn" data-act="toast" data-msg="10 月 1 日 — 10 月 31 日"><svg><use href="#i-calendar" /></svg></button>
+                </div>
+                <div class="pad">
+                  <div style="display: flex; align-items: center; justify-content: space-between">
+                    <button class="month-chip" data-act="toast" data-msg="切换月份">
+                      10月 <svg width="14" height="14"><use href="#i-chevron-down" /></svg>
+                    </button>
+                    <div style="font-size: 11px; color: var(--ink-3)">
+                      支出 <b class="num" style="color: var(--navy); font-size: 15px">¥2,000</b>
+                    </div>
+                  </div>
+                  <div class="seg filter" id="rec-filter" style="margin-top: 12px">
+                    <button class="on" data-filter="all">全部</button>
+                    <button data-filter="need">刚需</button>
+                    <button data-filter="want">伪刚需</button>
+                  </div>
+                  <div id="rec-list"></div>
+                </div>
+              </section>
+
+              <!-- ============================ 添加记账 ============================ -->
+              <section class="view no-tab" id="v-add" data-view="add">
+                <div class="add-head">
+                  <button class="nav-btn text" data-act="close-add">取消</button>
+                  <div class="t">添加记账</div>
+                  <button class="chip" data-act="toast" data-msg="已套用「工作午餐 ¥32」模板"><svg width="12" height="12"><use href="#i-template" /></svg> 模板</button>
+                </div>
+                <div class="pad add-pad" id="add-pad">
+                  <div class="add-cats" id="add-cats"></div>
+
+                  <div class="amount-line" id="amount-line">
+                    <span class="lbl">金额</span>
+                    <span class="val zero" id="add-amount"><span class="u">¥</span>0<span class="caret"></span></span>
+                  </div>
+
+                  <div class="baseline-card" id="baseline">
+                    <div class="row1">
+                      <span>你的餐饮基线 <b id="bl-base">¥13</b></span>
+                      <span>这笔高出 <b id="bl-gap">¥19</b></span>
+                    </div>
+                    <div class="judge">
+                      <button data-judge="need">这笔姓生活</button>
+                      <button data-judge="want" class="on">这笔姓爱好</button>
+                    </div>
+                    <div class="hint">机器只负责算差额，这笔钱怎么归属，始终由你决定。</div>
+                  </div>
+
+                  <div class="form-rows">
+                    <button class="form-row" data-pick="date">
+                      <svg><use href="#i-calendar" /></svg><span>日期</span>
+                      <span class="v" id="add-date">10月13日 · 今天 <svg><use href="#i-chevron-right" /></svg></span>
+                    </button>
+                    <button class="form-row" data-pick="account">
+                      <svg><use href="#i-wallet" /></svg><span>账户</span>
+                      <span class="v" id="add-account">微信钱包 <svg><use href="#i-chevron-right" /></svg></span>
+                    </button>
+                    <div class="form-row">
+                      <svg><use href="#i-pen" /></svg><span>备注</span>
+                      <input id="add-note" placeholder="输入备注（选填）" maxlength="24" />
+                    </div>
+                  </div>
+
+                  <button class="btn" id="save-inline" data-act="save-record">保存这笔</button>
+                </div>
+
+                <div class="keypad" id="keypad">
+                  <button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button>
+                  <button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button>
+                  <button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button>
+                  <button data-k=".">.</button><button data-k="0">0</button>
+                  <button class="fn" data-k="del"><svg><use href="#i-backspace" /></svg></button>
+                  <button class="fn" data-act="keypad-hide"><span class="hide-txt">收起</span></button>
+                  <button class="save" data-act="save-record" style="grid-column: span 2">保存</button>
+                </div>
+              </section>
+
+              <!-- ============================ 分类 ============================ -->
+              <section class="view" id="v-category" data-view="category">
+                <div class="nav-head">
+                  <div style="width: 34px"></div>
+                  <div class="title">支出分类</div>
+                  <button class="nav-btn" data-act="toast" data-msg="已按金额从高到低排序"><svg><use href="#i-grid" /></svg></button>
+                </div>
+                <div class="pad">
+                  <div class="card" style="padding: 16px 18px">
+                    <div style="display: flex; align-items: baseline; justify-content: space-between">
+                      <span style="font-size: 12px; color: var(--ink-2)">本月支出（总计）</span>
+                      <span class="chip yellow" style="height: 20px">伪刚需 25.3%</span>
+                    </div>
+                    <div class="total-amount"><span class="cur">¥</span><span class="v" style="font-size: 34px">2,000</span></div>
+                    <div class="stack-bar" style="margin-top: 10px"><i class="need" style="width: 74.7%"></i><i class="want" style="width: 25.3%"></i></div>
+                    <div class="legend" style="justify-content: space-between; margin-top: 8px">
+                      <span><i></i> 刚需 ¥1,494 · 74.7%</span>
+                      <span><i class="y"></i> 伪刚需 ¥506 · 25.3%</span>
+                    </div>
+                  </div>
+                  <div class="sec-head">
+                    <h3>支出分类</h3>
+                    <span class="more">全部 8 项</span>
+                  </div>
+                  <div class="card" style="padding: 8px 10px"><div class="cat-grid" id="cat-grid"></div></div>
+                </div>
+              </section>
+
+              <!-- ============================ 图表 ============================ -->
+              <section class="view" id="v-charts" data-view="charts">
+                <div class="nav-head">
+                  <div style="width: 34px"></div>
+                  <div class="title">统计</div>
+                  <button class="nav-btn" data-act="toast" data-msg="10 月 7 日 — 10 月 13 日"><svg><use href="#i-calendar" /></svg></button>
+                </div>
+                <div class="pad">
+                  <div class="seg" id="chart-seg" style="margin-bottom: 12px">
+                    <button class="on" data-range="week">周分析</button>
+                    <button data-range="month">月分析</button>
+                  </div>
+
+                  <div class="card" style="padding: 16px 18px">
+                    <div style="display: flex; align-items: flex-start; justify-content: space-between">
+                      <div>
+                        <div style="font-size: 12px; color: var(--ink-2)" id="ch-label">本周总支出</div>
+                        <div class="total-amount"><span class="cur">¥</span><span class="v" style="font-size: 32px" id="ch-total">512</span></div>
+                        <div style="font-size: 11px; color: var(--ink-3); margin-top: 2px">
+                          较上周 <span id="ch-delta" style="color: #3aa269; font-weight: 600">↓ 8.4%</span>
+                        </div>
+                      </div>
+                      <img src="assets/img/penguin-flat-front.png" alt="" style="width: 58px; margin-top: -4px" />
+                    </div>
+                    <div class="stack-bar" style="margin-top: 10px"><i class="need" id="ch-need" style="width: 70%"></i><i class="want" id="ch-want" style="width: 30%"></i></div>
+                    <div class="legend" style="justify-content: space-between; margin-top: 8px">
+                      <span><i></i> 刚需 <span id="ch-need-pct">70%</span></span>
+                      <span><i class="y"></i> 伪刚需 <span id="ch-want-pct">30%</span></span>
+                    </div>
+                  </div>
+
+                  <div class="card chart-card" style="margin-top: 12px">
+                    <div class="chart-head">
+                      <h3>支出趋势</h3>
+                      <div class="legend"><span><i></i> 刚需</span><span><i class="y"></i> 伪刚需</span></div>
+                    </div>
+                    <div id="ch-trend"></div>
+                  </div>
+
+                  <div class="card chart-card" style="margin-top: 12px">
+                    <div class="chart-head"><h3>分类占比</h3></div>
+                    <div id="ch-donut"></div>
+                  </div>
+
+                  <div class="comment-card">
+                    <img src="assets/img/penguin-face-calm.png" alt="" />
+                    <div class="b" id="ch-comment">
+                      <div class="nm">平平：</div>
+                      本周餐饮占了 <b>42%</b>，伪刚需部分主要来自两次外卖。
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ============================ AI 助手 ============================ -->
+              <section class="view no-tab chat-view" id="v-ai" data-view="ai">
+                <div class="chat-head">
+                  <div class="nav-head" style="padding-bottom: 0">
+                    <button class="nav-btn" data-act="back"><svg><use href="#i-chevron-left" /></svg></button>
+                    <div style="display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center">
+                      <div style="width: 30px; height: 30px; border-radius: 50%; overflow: hidden; background: #fff">
+                        <img src="assets/img/avatar-flat.png" alt="" style="width: 100%; height: 100%; object-fit: cover" />
+                      </div>
+                      <div style="line-height: 1.2">
+                        <div style="font-size: 14px; font-weight: 700; color: var(--navy)">AI 助手</div>
+                        <div style="font-size: 10px; color: #3aa269" id="ai-status">平平 · 在线</div>
+                      </div>
+                    </div>
+                    <button class="nav-btn" data-act="toast" data-msg="语音功能演示中"><svg><use href="#i-sun" /></svg></button>
+                  </div>
+                </div>
+                <div class="chat-scroll" id="chat-scroll"></div>
+                <div class="chips-row" id="chat-chips">
+                  <button data-say="帮我看看这周的消费">帮我看看这周</button>
+                  <button data-say="餐饮花多了吗">餐饮花多了吗</button>
+                  <button data-say="怎么设一个爱好预算">怎么设预算</button>
+                  <button data-say="我想存钱买相机">我想存钱买相机</button>
+                </div>
+                <div class="chat-input">
+                  <input id="chat-text" placeholder="发消息给平平…" maxlength="40" />
+                  <button class="send" id="chat-send"><svg><use href="#i-send" /></svg></button>
+                </div>
+              </section>
+
+              <!-- ============================ 我的 ============================ -->
+              <section class="view" id="v-me" data-view="me">
+                <div class="nav-head" style="padding-bottom: 0">
+                  <div style="width: 34px"></div>
+                  <div class="title"></div>
+                  <button class="nav-btn" data-go="settings"><svg><use href="#i-settings" /></svg></button>
+                </div>
+                <div class="profile-head">
+                  <div class="ava"><img src="assets/img/avatar-flat.png" alt="" /></div>
+                  <div>
+                    <div class="nm">平平的主人</div>
+                    <span class="lv"><svg width="10" height="10"><use href="#i-star" /></svg> Lv3 记账达人</span>
+                  </div>
+                  <div class="quote">记录每一笔<br />都是更好的自己！</div>
+                </div>
+
+                <div class="pad">
+                  <div class="card" style="margin-top: 14px">
+                    <div class="stat-duo">
+                      <div>
+                        <div class="k"><svg><use href="#i-calendar" /></svg> 记账天数</div>
+                        <div class="v">128<small>天</small></div>
+                        <div class="sub"><span class="chip green" style="height: 18px; font-size: 9.5px">连续 7 天</span></div>
+                      </div>
+                      <div>
+                        <div class="k"><svg><use href="#i-coin" /></svg> 本月记账</div>
+                        <div class="v">¥2,000</div>
+                        <div class="sub">较上月 <span class="up">+18% ↗</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="sec-head"><h3>本月预算</h3><span class="more">剩余 33%</span></div>
+                  <div class="card" style="padding: 2px 16px">
+                    <div class="budget-row">
+                      <img class="cat-icon" src="assets/img/cat-food.png" alt="" />
+                      <div class="info">
+                        <div class="t"><span>餐饮</span><b>¥1,000 / ¥1,200</b></div>
+                        <div class="mini-bar"><i style="width: 83%"></i></div>
+                      </div>
+                    </div>
+                    <div class="budget-row">
+                      <img class="cat-icon" src="assets/img/cat-shopping.png" alt="" />
+                      <div class="info">
+                        <div class="t"><span>购物</span><b>¥0 / ¥900</b></div>
+                        <div class="mini-bar"><i style="width: 2%"></i></div>
+                      </div>
+                    </div>
+                    <div class="budget-row">
+                      <img class="cat-icon" src="assets/img/cat-transport.png" alt="" />
+                      <div class="info">
+                        <div class="t"><span>出行</span><b>¥400 / ¥600</b></div>
+                        <div class="mini-bar"><i style="width: 66%"></i></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="sec-head"><h3>快捷入口</h3><span class="more">全部 ›</span></div>
+                  <div class="card" style="padding: 8px">
+                    <div class="quick-grid">
+                      <button data-go="add"><span class="qi blue"><svg><use href="#i-plus" /></svg></span>记一笔</button>
+                      <button data-go="budget"><span class="qi yellow"><svg><use href="#i-pie" /></svg></span>预算管理</button>
+                      <button data-go="charts"><span class="qi sky"><svg><use href="#i-bars" /></svg></span>账单统计</button>
+                      <button data-go="wish"><span class="qi pink"><svg><use href="#i-heart" /></svg></span>心愿清单</button>
+                    </div>
+                  </div>
+
+                  <div class="sec-head"><h3>我的成就</h3><button class="more" data-go="achievements">查看全部 <svg><use href="#i-chevron-right" /></svg></button></div>
+                  <div class="card" style="padding: 14px 8px 10px">
+                    <div class="badges">
+                      <div class="badge-item on"><div class="hex"><svg><use href="#i-calendar" /></svg></div>7天打卡<span class="st">进行中</span></div>
+                      <div class="badge-item gold"><div class="hex"><svg><use href="#i-star" /></svg></div>月度之星<span class="st">1/3</span></div>
+                      <div class="badge-item coral"><div class="hex"><svg><use href="#i-bars" /></svg></div>消费达人<span class="st">2/5</span></div>
+                      <div class="badge-item"><div class="hex"><svg><use href="#i-coin" /></svg></div>理财新手<span class="st">0/3</span></div>
+                    </div>
+                  </div>
+
+                  <div class="card" style="margin-top: 12px; padding: 2px 16px">
+                    <button class="list-row" data-go="settings">
+                      <span class="ic"><svg><use href="#i-settings" /></svg></span>
+                      设置
+                      <span class="arr"><svg><use href="#i-chevron-right" /></svg></span>
+                    </button>
+                    <button class="list-row" data-act="toast" data-msg="已生成你的邀请卡片">
+                      <span class="ic"><svg><use href="#i-share" /></svg></span>
+                      分享给好友<span class="sub">一起养成记账好习惯吧～</span>
+                      <span class="arr"><svg><use href="#i-chevron-right" /></svg></span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ============================ 设置 ============================ -->
+              <section class="view no-tab" id="v-settings" data-view="settings">
+                <div class="nav-head">
+                  <button class="nav-btn" data-act="back"><svg><use href="#i-chevron-left" /></svg></button>
+                  <div class="title">设置</div>
+                  <div style="width: 34px"></div>
+                </div>
+                <div class="pad">
+                  <div class="card" style="padding: 12px; display: flex; align-items: center; gap: 10px">
+                    <div style="width: 42px; height: 42px; border-radius: 50%; overflow: hidden; background: #f2f7fd">
+                      <img src="assets/img/avatar-flat.png" alt="" style="width: 100%; height: 100%; object-fit: cover" />
+                    </div>
+                    <div>
+                      <div style="font-size: 14px; font-weight: 700; color: var(--navy)">平平的主人</div>
+                      <div style="font-size: 11px; color: var(--ink-3)">basely_2024</div>
+                    </div>
+                    <span class="arr" style="margin-left: auto; color: var(--ink-4)"><svg width="16" height="16"><use href="#i-chevron-right" /></svg></span>
+                  </div>
+
+                  <div class="card" style="margin-top: 12px; padding: 2px 16px">
+                    <button class="list-row" data-act="toast" data-msg="手机号 · 微信绑定 · 账号管理">
+                      <span class="ic"><svg><use href="#i-shield" /></svg></span>
+                      账号与安全<span class="sub">手机号 · 微信绑定 · 账号管理</span>
+                      <span class="arr"><svg><use href="#i-chevron-right" /></svg></span>
+                    </button>
+                    <div class="list-row">
+                      <span class="ic"><svg><use href="#i-bell" /></svg></span>
+                      通知设置<span class="sub">推送通知 · 记账提醒 · 预算提醒</span>
+                      <span class="switch on" data-toggle></span>
+                    </div>
+                    <button class="list-row" data-act="toast" data-msg="跟随系统 · 浅色 · 深色">
+                      <span class="ic"><svg><use href="#i-moon" /></svg></span>
+                      主题外观<span class="sub">跟随系统 · 浅色 · 深色</span>
+                      <span class="arr"><svg><use href="#i-chevron-right" /></svg></span>
+                    </button>
+                    <button class="list-row" data-act="toast" data-msg="仅读取消费金额与类目，随时可撤销授权">
+                      <span class="ic"><svg><use href="#i-lock" /></svg></span>
+                      隐私设置<span class="sub">数据加密 · 权限管理</span>
+                      <span class="arr"><svg><use href="#i-chevron-right" /></svg></span>
+                    </button>
+                    <button class="list-row" data-act="toast" data-msg="感谢反馈，平平会认真看每一条">
+                      <span class="ic"><svg><use href="#i-help" /></svg></span>
+                      帮助与反馈<span class="sub">使用问题 · 意见反馈</span>
+                      <span class="arr"><svg><use href="#i-chevron-right" /></svg></span>
+                    </button>
+                    <button class="list-row" data-act="toast" data-msg="Basely 1.2.0 · 一款辅助记账 App">
+                      <span class="ic"><svg><use href="#i-info" /></svg></span>
+                      关于 Basely<span class="sub">版本 1.2.0 · 了解我们</span>
+                      <span class="arr"><svg><use href="#i-chevron-right" /></svg></span>
+                    </button>
+                  </div>
+
+                  <div class="btn ghost" style="margin-top: 18px" data-act="toast" data-msg="已退出登录（演示）">退出登录</div>
+                </div>
+              </section>
+
+              <!-- ============================ 成就 ============================ -->
+              <section class="view no-tab" id="v-achievements" data-view="achievements">
+                <div class="nav-head">
+                  <button class="nav-btn" data-act="back"><svg><use href="#i-chevron-left" /></svg></button>
+                  <div class="title">成就与提醒</div>
+                  <button class="nav-btn" data-act="toast" data-msg="每周获得一次勋章进度"><svg><use href="#i-help" /></svg></button>
+                </div>
+                <div class="pad">
+                  <div class="banner">
+                    <div class="glow"></div>
+                    <img src="assets/img/penguin-3d-tall.png" alt="平平" />
+                    <div class="ribbon">记账小能手</div>
+                    <div class="cap">已连续记账 7 天<br />再坚持 23 天解锁下一个徽章</div>
+                  </div>
+
+                  <div class="sec-head"><h3>我的成就</h3><span class="more">查看全部</span></div>
+                  <div class="card" style="padding: 14px 8px 10px">
+                    <div class="badges">
+                      <div class="badge-item on"><div class="hex"><svg><use href="#i-calendar" /></svg></div>7天打卡<span class="st">进行中</span></div>
+                      <div class="badge-item gold"><div class="hex"><svg><use href="#i-star" /></svg></div>月度之星<span class="st">1/3</span></div>
+                      <div class="badge-item coral"><div class="hex"><svg><use href="#i-bars" /></svg></div>消费达人<span class="st">2/5</span></div>
+                      <div class="badge-item"><div class="hex"><svg><use href="#i-coin" /></svg></div>理财新手<span class="st">0/3</span></div>
+                    </div>
+                  </div>
+
+                  <div class="sec-head"><h3>打卡进度</h3><span class="more">连续记账 7 天</span></div>
+                  <div class="card" style="padding: 6px 12px 12px">
+                    <div class="streak">
+                      <div class="d on"><div class="dot"><svg><use href="#i-check" /></svg></div><span>1</span></div>
+                      <div class="d on"><div class="dot"><svg><use href="#i-check" /></svg></div><span>2</span></div>
+                      <div class="d on"><div class="dot"><svg><use href="#i-check" /></svg></div><span>3</span></div>
+                      <div class="d on"><div class="dot"><svg><use href="#i-check" /></svg></div><span>4</span></div>
+                      <div class="d on"><div class="dot"><svg><use href="#i-check" /></svg></div><span>5</span></div>
+                      <div class="d on"><div class="dot"><svg><use href="#i-check" /></svg></div><span>6</span></div>
+                      <div class="d today"><div class="dot" style="font-size: 10px; color: var(--blue-strong); font-weight: 700">7</div><span>今天</span></div>
+                    </div>
+                  </div>
+
+                  <div class="sec-head"><h3>温柔提醒</h3></div>
+                  <div class="remind">
+                    <div class="tx">今天的奶茶很好喝，但下次可以先记账哦～<br />你的每一笔支出，都值得被认真对待。</div>
+                    <img src="assets/img/penguin-face-love.png" alt="" />
+                  </div>
+                </div>
+              </section>
+
+              <!-- ============================ 预算计划 ============================ -->
+              <section class="view no-tab" id="v-plan" data-view="plan">
+                <div class="nav-head">
+                  <button class="nav-btn" data-act="back"><svg><use href="#i-chevron-left" /></svg></button>
+                  <div class="title">预算计划</div>
+                  <button class="nav-btn" data-act="toast" data-msg="10 月 1 日 — 10 月 31 日"><svg><use href="#i-calendar" /></svg></button>
+                </div>
+                <div class="pad">
+                  <div class="hero-navy">
+                    <div class="lab">本月预算总额 <span class="chip" style="height: 18px; background: rgba(255,255,255,.16); color: #fff">已用 67%</span></div>
+                    <div class="big">¥3,000</div>
+                    <div class="bar"><i style="width: 67%"></i></div>
+                    <div class="foot"><span>¥2,000 / ¥3,000</span><span>剩余 ¥1,000</span></div>
+                    <div class="peng"><img src="assets/img/pos-act-rest.webp" alt="" /></div>
+                  </div>
+
+                  <div class="stat3">
+                    <div><div class="k">本月支出</div><div class="v">¥2,000</div></div>
+                    <div><div class="k">剩余预算</div><div class="v">¥1,000</div></div>
+                    <div><div class="k">日均支出</div><div class="v">¥66.7</div></div>
+                  </div>
+
+                  <div class="sec-head"><h3>本月支出总结</h3><span class="more">明细 ›</span></div>
+                  <div class="card" style="padding: 6px 16px 12px" id="plan-rows"></div>
+
+                  <div class="comment-card" style="margin-top: 12px">
+                    <img src="assets/img/penguin-face-happy.png" alt="" />
+                    <div class="b">
+                      <div class="nm">平平：</div>
+                      本月很稳！<br />伪刚需占比 <b>25.3%</b>，比上月下降 3.2%，继续保持哦～
+                    </div>
+                  </div>
+
+                  <div class="btn" style="margin-top: 16px" data-go="budget">调整预算</div>
+                </div>
+              </section>
+
+              <!-- ============================ 预算设置 ============================ -->
+              <section class="view no-tab" id="v-budget" data-view="budget">
+                <div class="nav-head">
+                  <button class="nav-btn" data-act="back"><svg><use href="#i-chevron-left" /></svg></button>
+                  <div class="title">预算设置</div>
+                  <button class="nav-btn" data-act="toast" data-msg="预算按「刚需 / 伪刚需」两层分配"><svg><use href="#i-help" /></svg></button>
+                </div>
+                <div class="pad">
+                  <div style="display: flex; gap: 10px; align-items: center; background: linear-gradient(120deg, #fffdf6, #fff6e2); border: 1px solid rgba(247, 199, 92, 0.35); border-radius: 18px; padding: 12px">
+                    <img src="assets/img/penguin-face-happy.png" alt="" style="width: 46px; height: 46px; border-radius: 50%; flex: none" />
+                    <div style="font-size: 11.5px; color: #9a6b18; line-height: 1.7">
+                      合理分配预算，让每一分钱都更有价值～<br />
+                      <span style="opacity: 0.75">超限只提示，不拦截。</span>
+                    </div>
+                  </div>
+
+                  <div class="sec-head" style="margin-top: 18px">
+                    <h3>按分类设置</h3>
+                    <span class="more">预算只作用于支出</span>
+                  </div>
+
+                  <div class="card" style="margin-top: 12px; padding: 16px 18px">
+                    <div style="display: flex; align-items: center; justify-content: space-between">
+                      <span style="font-size: 12px; color: var(--ink-2)">总预算</span>
+                      <span class="chip">修改</span>
+                    </div>
+                    <div class="total-amount">
+                      <span class="cur">¥</span><span class="v" style="font-size: 34px" id="bg-total">3,000</span>
+                      <span style="font-size: 12px; color: var(--ink-3); margin-left: 4px">/ 月</span>
+                    </div>
+                    <div class="stack-bar" style="margin-top: 10px"><i class="need" id="bg-used" style="width: 67%"></i></div>
+                    <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-3); margin-top: 6px">
+                      <span>已使用 <b id="bg-used-pct" style="color: var(--navy)">67%</b></span>
+                      <span>¥2,000 / ¥3,000</span>
+                    </div>
+                  </div>
+
+                  <div class="sec-head"><h3>分类预算（刚需 / 伪刚需分层）</h3></div>
+
+                  <div class="block-need">
+                    <div class="block-head">
+                      <span class="badge">刚需</span> 60% <span class="sum" id="bg-need-sum">¥1,800 / ¥3,000</span>
+                    </div>
+                    <div class="slider-row">
+                      <div class="top"><span>餐饮</span><span class="pct" data-pct="food">40%</span><span class="money" data-money="food">¥1,200</span></div>
+                      <input type="range" min="0" max="80" value="40" data-slider="food" />
+                    </div>
+                    <div class="slider-row">
+                      <div class="top"><span>交通</span><span class="pct" data-pct="travel">20%</span><span class="money" data-money="travel">¥600</span></div>
+                      <input type="range" min="0" max="80" value="20" data-slider="travel" />
+                    </div>
+                  </div>
+
+                  <div class="block-want">
+                    <div class="block-head">
+                      <span class="badge">伪刚需</span> 40% <span class="sum" id="bg-want-sum">¥1,200 / ¥3,000</span>
+                    </div>
+                    <div class="slider-row">
+                      <div class="top"><span>购物</span><span class="pct" data-pct="shopping">30%</span><span class="money" data-money="shopping">¥900</span></div>
+                      <input type="range" class="want" min="0" max="80" value="30" data-slider="shopping" />
+                    </div>
+                    <div class="slider-row">
+                      <div class="top"><span>娱乐</span><span class="pct" data-pct="fun">10%</span><span class="money" data-money="fun">¥300</span></div>
+                      <input type="range" class="want" min="0" max="80" value="10" data-slider="fun" />
+                    </div>
+                  </div>
+
+                  <div class="btn" style="margin-top: 16px" data-act="save-budget">保存设置</div>
+                </div>
+              </section>
+
+              <!-- ============================ 心愿存钱罐 ============================ -->
+              <section class="view no-tab" id="v-wish" data-view="wish">
+                <div class="nav-head">
+                  <button class="nav-btn" data-act="back"><svg><use href="#i-chevron-left" /></svg></button>
+                  <div class="title">心愿存钱罐</div>
+                  <button class="nav-btn" data-act="toast" data-msg="存与不存、存多少，都由你决定"><svg><use href="#i-heart" /></svg></button>
+                </div>
+                <div class="pad">
+                  <div class="card jar-card">
+                    <div class="wish-current">
+                      <span>当前心愿</span>
+                      <b id="wish-title">还没有心愿</b>
+                      <button class="wish-edit" data-act="wish-edit" aria-label="编辑心愿" style="display: none">✎</button>
+                    </div>
+
+                    <div class="bottle-stage">
+                      <div class="stage-sky" aria-hidden="true">
+                        <i class="spark" style="--x:13%;--y:17%;--s:9px;--dl:0s"></i>
+                        <i class="spark" style="--x:83%;--y:11%;--s:12px;--dl:-1.4s"></i>
+                        <i class="spark" style="--x:71%;--y:39%;--s:7px;--dl:-2.6s"></i>
+                        <i class="spark" style="--x:23%;--y:53%;--s:6px;--dl:-3.4s"></i>
+                        <i class="spark" style="--x:89%;--y:67%;--s:8px;--dl:-0.8s"></i>
+                        <i class="spark" style="--x:9%;--y:75%;--s:5px;--dl:-2.1s"></i>
+                        <i class="dust" style="--x:30%;--y:90%;--dl:0s"></i>
+                        <i class="dust" style="--x:64%;--y:94%;--dl:-2s"></i>
+                        <i class="dust" style="--x:46%;--y:80%;--dl:-4s"></i>
+                        <i class="dust" style="--x:77%;--y:86%;--dl:-1s"></i>
+                        <i class="dust" style="--x:18%;--y:63%;--dl:-5.5s"></i>
+                      </div>
+                      <div class="star-wrap">
+                        <svg class="star-svg" viewBox="0 0 200 264" aria-hidden="true">
+                          <defs>
+                            <clipPath id="starClip"><path d="M112.50 105.60 L117.32 118.57 Q121.16 128.88 132.15 129.34 L170.80 130.96 Q181.79 131.42 173.17 138.26 L142.86 162.29 Q134.24 169.12 137.19 179.72 L147.59 216.98 Q150.55 227.58 141.39 221.49 L109.16 200.09 Q100.00 194.00 90.84 200.09 L58.61 221.49 Q49.45 227.58 52.41 216.98 L62.81 179.72 Q65.76 169.12 57.14 162.29 L26.83 138.26 Q18.21 131.42 29.20 130.96 L67.85 129.34 Q78.84 128.88 82.68 118.57 L87.50 105.60 L87.50 92.00 Q87.50 88.00 91.50 88.00 L108.50 88.00 Q112.50 88.00 112.50 92.00 L112.50 105.60 Z" /></clipPath>
+                            <linearGradient id="glassGrad" x1="0.15" y1="0" x2="0.85" y2="1">
+                              <stop offset="0" stop-color="#ffffff" stop-opacity="0.5" />
+                              <stop offset="0.45" stop-color="#dcefff" stop-opacity="0.24" />
+                              <stop offset="1" stop-color="#a8cdf8" stop-opacity="0.2" />
+                            </linearGradient>
+                            <linearGradient id="liquidGrad" x1="0" y1="0" x2="0.3" y2="1">
+                              <stop offset="0" stop-color="#bfe4ff" />
+                              <stop offset="0.35" stop-color="#6fb6ff" />
+                              <stop offset="1" stop-color="#2f7fe6" />
+                            </linearGradient>
+                            <linearGradient id="corkGrad" x1="0" y1="0" x2="1" y2="0">
+                              <stop offset="0" stop-color="#b8946a" />
+                              <stop offset="0.25" stop-color="#f0dfc6" />
+                              <stop offset="0.6" stop-color="#fbf3e4" />
+                              <stop offset="1" stop-color="#b9946b" />
+                            </linearGradient>
+                            <radialGradient id="glowGrad" cx="0.5" cy="0.5" r="0.5">
+                              <stop offset="0" stop-color="#7ec2ff" stop-opacity="0.55" />
+                              <stop offset="1" stop-color="#7ec2ff" stop-opacity="0" />
+                            </radialGradient>
+                            <filter id="blur3"><feGaussianBlur stdDeviation="3" /></filter>
+                            <filter id="blur6"><feGaussianBlur stdDeviation="6" /></filter>
+                            <filter id="glow"><feGaussianBlur stdDeviation="8" /></filter>
+                          </defs>
+
+                          <!-- 瓶体（玻璃壳） -->
+                          <path d="M112.50 105.60 L117.32 118.57 Q121.16 128.88 132.15 129.34 L170.80 130.96 Q181.79 131.42 173.17 138.26 L142.86 162.29 Q134.24 169.12 137.19 179.72 L147.59 216.98 Q150.55 227.58 141.39 221.49 L109.16 200.09 Q100.00 194.00 90.84 200.09 L58.61 221.49 Q49.45 227.58 52.41 216.98 L62.81 179.72 Q65.76 169.12 57.14 162.29 L26.83 138.26 Q18.21 131.42 29.20 130.96 L67.85 129.34 Q78.84 128.88 82.68 118.57 L87.50 105.60 L87.50 92.00 Q87.50 88.00 91.50 88.00 L108.50 88.00 Q112.50 88.00 112.50 92.00 L112.50 105.60 Z" fill="url(#glassGrad)" stroke="rgba(255,255,255,0.55)" stroke-width="1.6" />
+
+                          <g clip-path="url(#starClip)">
+                            <!-- 内部光晕 -->
+                            <ellipse cx="100" cy="180" rx="90" ry="80" fill="url(#glowGrad)" />
+
+                            <!-- 液体 -->
+                            <rect id="star-rect" x="0" y="0" width="200" height="264" fill="url(#liquidGrad)" style="transform: translateY(175px)" />
+                            <rect id="star-surface" x="0" y="0" width="200" height="3" fill="#eaf6ff" style="transform: translateY(172px)" />
+
+                            <!-- 瓶内小星星 -->
+                            <path d="M108 214 l3.4 7.6 8 1-5.9 5.6 1.7 8-7.2-4-7.2 4 1.7-8-5.9-5.6 8-1z" fill="#ffffff" opacity="0.8" />
+                            <path d="M78 196 l2.4 5.4 5.7 0.7-4.2 4 1.2 5.7-5.1-2.8-5.1 2.8 1.2-5.7-4.2-4 5.7-0.7z" fill="#ffffff" opacity="0.65" />
+                            <path d="M128 188 l1.8 4 4.2 0.5-3.1 3 0.9 4.2-3.8-2.1-3.8 2.1 0.9-4.2-3.1-3 4.2-0.5z" fill="#ffffff" opacity="0.55" />
+
+                            <!-- 气泡 -->
+                            <circle class="bubble b1" cx="86" cy="222" r="3.2" fill="#ffffff" opacity="0.7" />
+                            <circle class="bubble b2" cx="114" cy="210" r="2.4" fill="#ffffff" opacity="0.6" />
+                            <circle class="bubble b3" cx="98" cy="230" r="2" fill="#ffffff" opacity="0.55" />
+
+                            <!-- 立体斜面：左上亮、右下暗 -->
+                            <path d="M112.50 105.60 L117.32 118.57 Q121.16 128.88 132.15 129.34 L170.80 130.96 Q181.79 131.42 173.17 138.26 L142.86 162.29 Q134.24 169.12 137.19 179.72 L147.59 216.98 Q150.55 227.58 141.39 221.49 L109.16 200.09 Q100.00 194.00 90.84 200.09 L58.61 221.49 Q49.45 227.58 52.41 216.98 L62.81 179.72 Q65.76 169.12 57.14 162.29 L26.83 138.26 Q18.21 131.42 29.20 130.96 L67.85 129.34 Q78.84 128.88 82.68 118.57 L87.50 105.60 L87.50 92.00 Q87.50 88.00 91.50 88.00 L108.50 88.00 Q112.50 88.00 112.50 92.00 L112.50 105.60 Z" transform="translate(2.5,3)" fill="none" stroke="#0e2a52" stroke-opacity="0.45" stroke-width="9" filter="url(#blur3)" />
+                            <path d="M112.50 105.60 L117.32 118.57 Q121.16 128.88 132.15 129.34 L170.80 130.96 Q181.79 131.42 173.17 138.26 L142.86 162.29 Q134.24 169.12 137.19 179.72 L147.59 216.98 Q150.55 227.58 141.39 221.49 L109.16 200.09 Q100.00 194.00 90.84 200.09 L58.61 221.49 Q49.45 227.58 52.41 216.98 L62.81 179.72 Q65.76 169.12 57.14 162.29 L26.83 138.26 Q18.21 131.42 29.20 130.96 L67.85 129.34 Q78.84 128.88 82.68 118.57 L87.50 105.60 L87.50 92.00 Q87.50 88.00 91.50 88.00 L108.50 88.00 Q112.50 88.00 112.50 92.00 L112.50 105.60 Z" transform="translate(-2,-2)" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="6" filter="url(#blur3)" />
+
+                            <!-- 镜面高光 -->
+                            <ellipse cx="70" cy="150" rx="16" ry="34" fill="#ffffff" opacity="0.75" transform="rotate(-22 70 150)" filter="url(#blur6)" />
+                            <path d="M52 200 L60 172" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.8" filter="url(#blur3)" />
+                            <path d="M92 96 L92 116" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.7" filter="url(#blur3)" />
+                          </g>
+
+                          <!-- 外轮廓亮边 -->
+                          <path d="M112.50 105.60 L117.32 118.57 Q121.16 128.88 132.15 129.34 L170.80 130.96 Q181.79 131.42 173.17 138.26 L142.86 162.29 Q134.24 169.12 137.19 179.72 L147.59 216.98 Q150.55 227.58 141.39 221.49 L109.16 200.09 Q100.00 194.00 90.84 200.09 L58.61 221.49 Q49.45 227.58 52.41 216.98 L62.81 179.72 Q65.76 169.12 57.14 162.29 L26.83 138.26 Q18.21 131.42 29.20 130.96 L67.85 129.34 Q78.84 128.88 82.68 118.57 L87.50 105.60 L87.50 92.00 Q87.50 88.00 91.50 88.00 L108.50 88.00 Q112.50 88.00 112.50 92.00 L112.50 105.60 Z" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.4" stroke-linejoin="round" />
+
+                          <!-- 软木塞 -->
+                          <g>
+                            <rect x="89.5" y="66" width="21" height="26" rx="3.4" fill="url(#corkGrad)" />
+                            <ellipse cx="100" cy="67" rx="10.5" ry="3.4" fill="#fdf6ea" />
+                            <ellipse cx="100" cy="67" rx="7.5" ry="2.2" fill="#dfc7a4" opacity="0.75" />
+                            <rect x="89.5" y="86" width="21" height="6" rx="2" fill="#9c7a52" opacity="0.5" />
+                            <path d="M94 72 L94 89M100 70 L100 90M106 72 L106 89" stroke="#c2a37d" stroke-width="0.9" opacity="0.6" />
+                          </g>
+
+                          <!-- 瓶口 -->
+                          <ellipse cx="100" cy="88" rx="12.6" ry="3.8" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.9" />
+                        </svg>
+                      </div>                      <div class="star-center">
+                        <b id="star-pct">40%</b>
+                        <span id="star-sub">已存 ¥3,200</span>
+                      </div>
+                    </div>
+
+                    <div class="wish-meta">
+                      <div><div class="k">目标金额</div><div class="v" id="wish-target">¥8,000</div></div>
+                      <div><div class="k">已存</div><div class="v" id="wish-saved">¥3,200</div></div>
+                      <div><div class="k">还差</div><div class="v" id="wish-left">¥4,800</div></div>
+                    </div>
+                    <div class="wish-input">
+                      <span class="cur">¥</span>
+                      <input id="wish-amount" type="number" inputmode="decimal" min="1" placeholder="输入要存的金额" />
+                      <button class="primary" data-act="wish-save">存入</button>
+                    </div>
+                    <div class="wish-actions">
+                      <button data-wish-quick="100">+100</button>
+                      <button data-wish-quick="500">+500</button>
+                      <button data-wish-quick="1000">+1000</button>
+                      <button data-act="wish-withdraw">取出</button>
+                    </div>
+                    <div class="wish-support">钱是慢慢满上去的，不是被要求满上去的。<br />不设定额 · 不催促 · 随时可存可取</div>
+                  </div>
+
+                  <div class="sec-head"><h3>我的心愿</h3><button class="more" data-act="wish-new">＋ 新心愿</button></div>
+                  <div class="card" style="padding: 4px 12px" id="wish-list"></div>
+
+                  <div class="sec-head"><h3>最近存入</h3><span class="more" id="wish-count">共 0 笔</span></div>
+                  <div class="card" style="padding: 4px 16px" id="wish-log"></div>
+                </div>
+              </section>
+            </div>
+
+            <!-- ============================ 平平气泡 ============================ -->
+            <button class="mascot" id="mascot" aria-label="和平平聊聊">
+              <span class="mascot-halo"></span>
+              <span class="mascot-tip" id="mascot-tip"></span>
+              <img id="mascot-img" src="assets/img/pos-act-rest.webp" alt="平平" />
+            </button>
+
+            <!-- ============================ tab bar ============================ -->
+            <nav class="tabbar" id="tabbar">
+              <button class="tab on" data-tab="home"><svg><use href="#i-home" /></svg>首页</button>
+              <button class="tab" data-tab="records"><svg><use href="#i-list" /></svg>账单</button>
+              <button class="tab-fab" data-go="add" aria-label="记一笔"><svg><use href="#i-plus" /></svg></button>
+              <button class="tab" data-tab="charts"><svg><use href="#i-chart" /></svg>图表</button>
+              <button class="tab" data-tab="me"><svg><use href="#i-user" /></svg>我的</button>
+            </nav>
+
+            <!-- sheets -->
+            <div class="sheet-mask" id="mask"></div>
+            <div class="sheet" id="sheet"></div>
+            <div class="toast" id="toast"></div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="stage-tools">
+      <button id="fit-btn" type="button" title="切换 100% / 适应窗口">适应窗口</button>
+    </div>
+
+    <script src="assets/js/data.js?v=13"></script>
+    <script src="assets/js/app.js?v=13"></script>
+  </body>
+</html>

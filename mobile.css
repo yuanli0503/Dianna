@@ -1,0 +1,92 @@
+/* ---------------------------------------------------------------
+   basely mobile —— 只展示手机框里的 App，去掉外框、侧栏与工具栏
+   由 tools/make-mobile.mjs 注入，不需要手动引用
+   --------------------------------------------------------------- */
+
+html.mobile-mode,
+html.mobile-mode body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #f5f9fc;
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
+}
+
+html.mobile-mode .stage-wrap {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100dvh;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+}
+
+/* 关掉桌面端的等比缩放，改用脚本按屏幕比例缩放手机本体 */
+html.mobile-mode .stage {
+  display: block;
+  width: auto;
+  height: auto;
+  gap: 0;
+  transform: none !important;
+}
+
+html.mobile-mode .stage-side,
+html.mobile-mode .stage-tools,
+html.mobile-mode .statusbar {
+  display: none !important;
+}
+
+/* 去掉设备外框，只留屏幕 */
+html.mobile-mode .phone {
+  width: 390px;
+  height: 844px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+html.mobile-mode .device {
+  width: 390px;
+  height: 844px;
+  padding: 0;
+  border-radius: 0;
+  background: #f5f9fc;
+  box-shadow: none;
+}
+
+html.mobile-mode .app {
+  width: 390px;
+  height: 844px;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+/* 真机刘海 / 底部手势条 */
+@supports (padding: env(safe-area-inset-top)) {
+  html.mobile-mode .app {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* 真机上不要出现滚动条与选区高亮 */
+html.mobile-mode ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+html.mobile-mode .mascot {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html.mobile-mode input,
+html.mobile-mode textarea {
+  font-size: 16px; /* 避免 iOS 聚焦时自动放大 */
+}

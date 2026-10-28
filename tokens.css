@@ -1,0 +1,150 @@
+/* ============================================================
+   Basely · 基线 —— 设计令牌
+   colours sampled from the original design files
+   ============================================================ */
+:root {
+  /* brand */
+  --navy: #24396b;
+  --navy-deep: #1b2c55;
+  --navy-ink: #1d2f52;
+  --blue: #57a6fe;
+  --blue-strong: #3d95fb;
+  --blue-soft: #a9cbf3;
+  --blue-pale: #e8f2ff;
+  --blue-mist: #f3f8ff;
+  --yellow: #fed984;
+  --yellow-deep: #f7c75c;
+  --yellow-pale: #fff5dc;
+  --cream: #fbf8f1;
+  --cream-deep: #f4ecdd;
+
+  /* ink */
+  --ink: #1d2f52;
+  --ink-2: #5b6b85;
+  --ink-3: #8c99ad;
+  --ink-4: #b9c3d2;
+  --line: rgba(36, 57, 107, 0.08);
+  --line-strong: rgba(36, 57, 107, 0.14);
+
+  /* surfaces */
+  --white: #ffffff;
+  --app-bg: #f5f9fc;
+  --card: #ffffff;
+
+  /* radii */
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+  --r-pill: 999px;
+
+  /* shadows */
+  --sh-sm: 0 2px 8px rgba(29, 47, 82, 0.05);
+  --sh-md: 0 10px 30px -12px rgba(29, 47, 82, 0.16);
+  --sh-lg: 0 30px 70px -40px rgba(29, 47, 82, 0.35);
+  --sh-blue: 0 12px 24px -12px rgba(87, 166, 254, 0.7);
+  --sh-yellow: 0 12px 24px -12px rgba(247, 199, 92, 0.8);
+
+  /* type */
+  --sans: "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei UI",
+    "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --num: "SF Pro Display", "PingFang SC", "Helvetica Neue", "Segoe UI",
+    "Microsoft YaHei", sans-serif;
+
+  /* layout */
+  --page: 1180px;
+  --nav-h: 72px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+ul,
+ol {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+::selection {
+  background: rgba(87, 166, 254, 0.25);
+}
+
+/* thin scrollbars inside app surfaces */
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(36, 57, 107, 0.16) transparent;
+}
+.thin-scroll::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: rgba(36, 57, 107, 0.16);
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

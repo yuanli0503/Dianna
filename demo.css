@@ -1,0 +1,282 @@
+/* ===============================================================
+   basely 体验版 —— 应用指引 + 资料编辑
+   只在 basely-demo.html 里加载
+   =============================================================== */
+
+/* ---------------------------------------------------- 资料编辑入口 */
+.profile-head {
+  position: relative;
+}
+.profile-head .ava {
+  position: relative;
+}
+.profile-edit-btn {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: #57a6fe;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: 0 4px 10px -4px rgba(61, 149, 251, 0.9);
+}
+.profile-edit-btn:active {
+  transform: scale(0.96);
+}
+
+/* 资料编辑面板 */
+.edit-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 120;
+  background: rgba(15, 27, 48, 0.42);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s;
+}
+.edit-mask.on {
+  opacity: 1;
+  visibility: visible;
+}
+.edit-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 121;
+  background: #fff;
+  border-radius: 22px 22px 0 0;
+  padding: 18px 18px calc(18px + env(safe-area-inset-bottom));
+  transform: translateY(110%);
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 -12px 40px -20px rgba(20, 38, 70, 0.5);
+}
+.edit-sheet.on {
+  transform: none;
+}
+.edit-sheet h3 {
+  font-size: 15px;
+  margin: 0 0 14px;
+  color: var(--navy, #24396b);
+}
+.edit-field {
+  margin-bottom: 12px;
+}
+.edit-field label {
+  display: block;
+  font-size: 11px;
+  color: #8c99ad;
+  margin-bottom: 6px;
+}
+.edit-field input {
+  width: 100%;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(36, 57, 107, 0.12);
+  background: #f7fafd;
+  padding: 0 12px;
+  font-size: 14px;
+  color: #1d2f52;
+  font-family: inherit;
+}
+.edit-field input:focus {
+  outline: none;
+  border-color: #57a6fe;
+  background: #fff;
+}
+.edit-avas {
+  display: flex;
+  gap: 10px;
+  margin: 2px 0 14px;
+  flex-wrap: wrap;
+}
+.edit-avas button {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: #f2f6fa;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+.edit-avas button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.edit-avas button.on {
+  border-color: #57a6fe;
+  box-shadow: 0 6px 16px -8px rgba(61, 149, 251, 0.8);
+}
+.edit-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+.edit-actions button {
+  flex: 1;
+  height: 44px;
+  border-radius: 14px;
+  border: 0;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+.edit-actions .ghost {
+  background: #f2f6fa;
+  color: #5b6b85;
+}
+.edit-actions .primary {
+  background: #57a6fe;
+  color: #fff;
+}
+
+/* ---------------------------------------------------- 空状态补强 */
+.empty-hint {
+  padding: 22px 8px;
+  text-align: center;
+  color: #9aa7b8;
+  font-size: 12.5px;
+  line-height: 1.9;
+}
+.empty-hint b {
+  color: #5b6b85;
+}
+
+/* ---------------------------------------------------- 应用指引 */
+.tour-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+}
+.tour-ring {
+  position: absolute;
+  border-radius: 16px;
+  box-shadow: 0 0 0 9999px rgba(11, 22, 42, 0.62);
+  transition: all 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.tour-ring.no-target {
+  left: 50%;
+  top: 50%;
+  width: 1px;
+  height: 1px;
+  border-radius: 0;
+  box-shadow: 0 0 0 9999px rgba(11, 22, 42, 0.72);
+}
+.tour-hit {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.tour-card {
+  position: absolute;
+  z-index: 3;
+  left: 14px;
+  right: 14px;
+  pointer-events: auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 14px 14px 12px;
+  box-shadow: 0 18px 44px -20px rgba(11, 22, 42, 0.75);
+  transition: top 0.36s cubic-bezier(0.22, 1, 0.36, 1), bottom 0.36s;
+}
+.tour-card .row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.tour-card .pv {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #eaf3ff;
+  flex: none;
+  overflow: hidden;
+}
+.tour-card .pv img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tour-card .tx {
+  flex: 1;
+  min-width: 0;
+}
+.tour-card .tx .t {
+  font-size: 13px;
+  font-weight: 800;
+  color: #24396b;
+  margin-bottom: 3px;
+}
+.tour-card .tx .d {
+  font-size: 12px;
+  line-height: 1.65;
+  color: #5b6b85;
+}
+.tour-card .foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px solid rgba(36, 57, 107, 0.08);
+}
+.tour-card .step {
+  font-size: 10.5px;
+  color: #9aa7b8;
+  letter-spacing: 0.04em;
+}
+.tour-card .btns {
+  display: flex;
+  gap: 8px;
+}
+.tour-card .btns button {
+  border: 0;
+  border-radius: 999px;
+  height: 30px;
+  padding: 0 14px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+.tour-card .skip {
+  background: transparent;
+  color: #9aa7b8;
+  padding: 0 6px !important;
+}
+.tour-card .next {
+  background: #57a6fe;
+  color: #fff;
+  box-shadow: 0 8px 18px -10px rgba(61, 149, 251, 0.9);
+}
+.tour-card .dots {
+  display: flex;
+  gap: 4px;
+  margin-top: 9px;
+}
+.tour-card .dots i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(36, 57, 107, 0.16);
+}
+.tour-card .dots i.on {
+  background: #57a6fe;
+  width: 14px;
+  border-radius: 3px;
+}

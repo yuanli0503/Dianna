@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Basely 基线 · 把账单劈成两层</title>
+    <meta name="description" content="基线 Basely 是一款辅助记账 App：为每笔支出建立个人刚需基线，把账单劈成「刚需」与「伪刚需」两层。为生活付费，为热爱认账。" />
+    <link rel="icon" href="assets/img/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/img/app-icon-180.png" />
+    <link rel="stylesheet" href="assets/css/site.css?v=6" />
+  </head>
+  <body class="site">
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="a-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="a-chev-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="a-chev-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="a-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="a-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="2.8" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+        <symbol id="a-scale" viewBox="0 0 24 24"><path d="M12 4v16M6 8h12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M6 8 3 15h6L6 8ZM18 8l-3 7h6l-3-7Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+        <symbol id="a-hand" viewBox="0 0 24 24"><path d="M8 12V6.5a1.8 1.8 0 0 1 3.6 0V12m0-1.5V5.8a1.8 1.8 0 0 1 3.6 0V12m0-1V7.5a1.8 1.8 0 0 1 3.6 0V15a5.5 5.5 0 0 1-5.5 5.5h-1A5.5 5.5 0 0 1 6.8 15v-1L5 11.4a1.6 1.6 0 0 1 2.4-2L8 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="a-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8.5 10V8a3.5 3.5 0 0 1 7 0v2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+        <symbol id="a-bars" viewBox="0 0 24 24"><path d="M5 20V11M12 20V5M19 20v-6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+        <symbol id="a-cal" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+      </defs>
+    </svg>
+
+    <!-- ============================== NAV ============================== -->
+    <header class="nav" id="nav">
+      <div class="wrap">
+        <a class="nav-logo" href="#top" aria-label="basely">
+          <img src="assets/img/logo-lockup.png" alt="basely 基线" />
+        </a>
+        <nav class="nav-links">
+          <a href="#problem">问题</a>
+          <a href="#mechanism">机制</a>
+          <a href="#idea">方案</a>
+          <a href="#screens">界面</a>
+          <a href="#ip">形象</a>
+          <a href="#posters">海报</a>
+        </nav>
+        <a class="nav-cta" href="app.html">
+          打开 App 原型
+          <svg><use href="#a-arrow" /></svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" id="top">
+      <div class="hero-bg"></div>
+      <div class="hero-line"><span>BASELINE · 基线</span></div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">辅助记账 App · 伪刚需识别 · 消费可视化</div>
+          <h1 class="display">没乱花，<br />它占了 <span class="hl">25.3%</span></h1>
+          <p class="lead">
+            账单里没有大额异常，全是正常吃喝，数额却悄悄变大了。<br />
+            Basely 为每笔支出建立个人刚需基线，把账单劈成两层 ——<br />
+            基线以下的是生活，基线以上的是热爱。
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="app.html">
+              打开可交互原型
+              <svg><use href="#a-arrow" /></svg>
+            </a>
+            <a class="btn ghost" href="#idea">看设计思路</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="k">本月日常支出</div>
+              <div class="v">¥2,000</div>
+            </div>
+            <div>
+              <div class="k">识别出的溢价</div>
+              <div class="v">506<small>元</small></div>
+            </div>
+            <div>
+              <div class="k">≤30 元小额笔数</div>
+              <div class="v">62<small>笔</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="device-mini">
+            <img src="assets/img/screen-home.webp" alt="Basely 首页界面" />
+          </div>
+          <div class="float-card a">
+            <div class="k">刚需（基线以下）</div>
+            <div class="v">¥1,494</div>
+            <div class="bar"><i style="width: 74.7%; background: linear-gradient(90deg,#a9cbf3,#57a6fe)"></i></div>
+          </div>
+          <div class="float-card b">
+            <div class="k">溢价率</div>
+            <div class="v">25.3%</div>
+            <div class="bar"><i style="width: 25.3%; background: linear-gradient(90deg,#ffd984,#f7c75c)"></i></div>
+          </div>
+          <img class="peng-pop" src="assets/img/penguin-3d-front.png" alt="企鹅平平" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== BAND ============================== -->
+    <div class="baseline-band">
+      <div class="wrap band-inner">
+        <div class="band-label">黑背白腹<br />天然一条分界线</div>
+        <div class="band-quote">
+          它不需要任何道具，就承载了「劈成两层」的叙事 ——
+          <em>以上是伪刚需</em>，<em class="b">以下是刚需</em>。
+        </div>
+        <div class="band-label" style="text-align: right">企鹅「平平」<br />IP / 助手 / 图标</div>
+      </div>
+    </div>
+
+    <!-- ============================== PROBLEM ============================== -->
+    <section class="sec" id="problem">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow">01 / 问题</div>
+          <h2 class="sec-title">三个解释不通的日常</h2>
+          <p class="lead">
+            年轻人有花钱的爱好，省吃俭用却仍存不下钱。<br />
+            我们把这类困惑收集起来，发现它们都卡在同一个地方：解释力。
+          </p>
+        </div>
+
+        <div class="prob-grid">
+          <article class="prob reveal">
+            <div class="no">现象 01</div>
+            <h3>账单类目没变<br />数额却变大了</h3>
+            <div class="row"><span>表面解释</span><b>物价上涨</b></div>
+            <div class="row warn"><span>解释力问题</span><b>涨幅远超体感，解释力不足</b></div>
+          </article>
+          <article class="prob reveal">
+            <div class="no">现象 02</div>
+            <h3>省吃俭用<br />却仍存不下钱</h3>
+            <div class="row"><span>表面解释</span><b>自制力不够</b></div>
+            <div class="row warn"><span>解释力问题</span><b>把结构问题归因于品德，无解</b></div>
+          </article>
+          <article class="prob reveal">
+            <div class="no">现象 03</div>
+            <h3>翻账单发现<br />全是正常吃喝</h3>
+            <div class="row"><span>表面解释</span><b>那就没乱花</b></div>
+            <div class="row warn"><span>解释力问题</span><b>与「钱不见了」的事实直接冲突</b></div>
+          </article>
+        </div>
+
+        <p class="sec-line reveal">
+          <b>三个现象指向同一个结构性问题：</b>钱没有变多，是它的去向被重新编码了。
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================== MECHANISM ============================== -->
+    <section class="sec white" id="mechanism">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow blue">02 / 机制</div>
+          <h2 class="sec-title">爱好是如何隐形的</h2>
+          <p class="lead">
+            爱好不再以「买了个镜头」「报了个班」出现，而是改写了日常消费的参数。<br />
+            它与记账系统最重要的维度（类目）完全正交，因此天然不可见。
+          </p>
+        </div>
+
+        <div class="mech">
+          <article class="mech-item reveal">
+            <div class="n">01</div>
+            <h3>账单所见</h3>
+            <p>餐饮、日用、交通 —— 类目与过去完全一致，看不出任何异常。</p>
+          </article>
+          <article class="mech-item reveal">
+            <div class="n">02</div>
+            <h3>里层</h3>
+            <p>爱好改写单价、频次与场景：同一杯咖啡，价格与意义都被换了。</p>
+          </article>
+          <article class="mech-item reveal">
+            <div class="n">03</div>
+            <h3>结果</h3>
+            <p>刚需基准线被整体抬高，差额混进日常，无法被逐笔识别。</p>
+          </article>
+          <article class="mech-item reveal">
+            <div class="n">04</div>
+            <h3>悖论</h3>
+            <p>越省吃俭用，越存不下钱 —— 节流作用在错误的变量上。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== SPLIT / 界定 ============================== -->
+    <section class="sec" id="split">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow">03 / 界定</div>
+          <h2 class="sec-title">先划清边界，再谈算法</h2>
+          <p class="lead">
+            我们不做「收入 − 支出」的对比，只做「单笔支出」与「总支出」之间的关系。<br />
+            关心的是每一笔钱姓什么，不是这个月结余多少。
+          </p>
+        </div>
+
+        <div class="split-grid">
+          <div class="def need reveal">
+            <span class="tag">基线以下</span>
+            <h3>刚需</h3>
+            <p>维持基本生活所必需的支出。单价与频次长期稳定，可预期、可复现。</p>
+            <div class="eg">例：日常三餐、通勤、基础日用品</div>
+          </div>
+          <div class="def want reveal">
+            <span class="tag">基线以上</span>
+            <h3>伪刚需</h3>
+            <p>显示为常规类目，但超出个人刚需基线的那部分。由爱好、习惯或场景驱动。</p>
+            <div class="eg">例：为探店多付的差价、为装备升级的支出</div>
+          </div>
+        </div>
+
+        <div class="split-viz reveal">
+          <div class="top">
+            <span class="t">同一个月的餐饮支出</span>
+            <span class="v">¥1,000</span>
+          </div>
+          <div class="split-bar" data-split>
+            <i class="need" style="width: 0"></i>
+            <i class="want" style="width: 0"></i>
+          </div>
+          <div class="split-legend">
+            <div>
+              <span class="dot" style="background: #57a6fe"></span>刚需 · 基线以下
+              <b>¥670</b>
+            </div>
+            <div style="text-align: right">
+              <span class="dot" style="background: #f7c75c"></span>伪刚需 · 基线以上
+              <b>¥330</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== ALGORITHM ============================== -->
+    <section class="sec navy" id="algorithm">
+      <div class="wrap">
+        <div class="algo-grid">
+          <div class="reveal">
+            <div class="eyebrow" style="color: #f7c75c">04 / 算法</div>
+            <h2 class="sec-title" style="margin: 18px 0">单笔与基线之差</h2>
+            <p class="lead">
+              只算支出侧，不涉及收入。每一笔先和「它自己的基线」比，<br />
+              把正向差额累加，再除以同期总支出。
+            </p>
+
+            <div class="formula">
+              <div><span class="k">STEP 1</span>溢价金额 ＝ Σ（<b>单笔支出</b> − <b>该笔对应的刚需基线</b>）</div>
+              <div><span class="k">STEP 2</span>溢价率 ＝ <b>溢价金额</b> ÷ <b>同期总支出</b></div>
+            </div>
+
+            <div class="algo-steps">
+              <div class="algo-step">
+                <div class="i">1</div>
+                <div><b>单笔比。</b>基线来自本人历史数据 ＋ 同城同品类参照，剔除极端值。</div>
+              </div>
+              <div class="algo-step">
+                <div class="i">2</div>
+                <div><b>差额汇总。</b>溢价金额不存在于任何一行账单里，是被逐笔累加出来的。</div>
+              </div>
+              <div class="algo-step">
+                <div class="i">3</div>
+                <div><b>占总支出。</b>全程只使用支出数据，不引入收入、不做结余判断。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="total-card-dark reveal">
+            <div class="k">本月日常支出 ¥2,000 · 识别出的溢价</div>
+            <div class="v">¥506 <em>/ 25.3%</em></div>
+            <div class="sub">这个数不在任何一行账单里 —— 它是被逐笔累加出来的。</div>
+            <div class="rows">
+              <div class="r">
+                <span>餐饮</span>
+                <span class="track"><i style="width: 65%"></i></span>
+                <span class="amt">¥330</span>
+              </div>
+              <div class="r">
+                <span>日用</span>
+                <span class="track"><i style="width: 19%"></i></span>
+                <span class="amt">¥96</span>
+              </div>
+              <div class="r">
+                <span>出行</span>
+                <span class="track"><i style="width: 16%"></i></span>
+                <span class="amt">¥80</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== SMALL SPEND ============================== -->
+    <section class="sec sky" id="small">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow blue">05 / 第二条线索</div>
+          <h2 class="sec-title">「没花什么大钱」也会没钱</h2>
+          <p class="lead">
+            钱不是被一笔大钱带走的，是被很多小钱带走的。<br />
+            单笔看都不值得省，加总起来却超过任何一笔大额。
+          </p>
+        </div>
+
+        <div class="small-grid">
+          <div class="small-card reveal">
+            <div class="big">62<small>笔 · ¥1,116</small></div>
+            <div class="cap">单笔 ≤ 30 元的小额支出，占月支出 55.8%</div>
+            <div class="pips" id="pips-small"></div>
+            <div class="foot">这就是「我明明没花那么多，为什么钱还是没了」的答案之一。</div>
+          </div>
+          <div class="small-card want reveal">
+            <div class="big">11<small>笔 · ¥884</small></div>
+            <div class="cap">单笔 &gt; 30 元的大额支出，占月支出 44.2%</div>
+            <div class="pips" id="pips-big"></div>
+            <div class="foot">大额支出你其实记得住 —— 真正隐形的是那些「顺手就花了」的小钱。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== SOLUTION ============================== -->
+    <section class="sec" id="idea">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow">06 / 方案</div>
+          <h2 class="sec-title">不是记账 App，是辅助记账</h2>
+          <p class="lead">
+            它替你完成记账里最耗人的那一步 —— 归类和归因；剩下的判断，始终由你做主。<br />
+            记账 App 回答「我花了多少」，基线回答「这些钱里，哪些是生活，哪些是爱好」。
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step reveal">
+            <div class="n">S1</div>
+            <h3>定基线</h3>
+            <p>本人历史 ＋ 同城同品类，剔除极端值。</p>
+            <span class="who machine">机器</span>
+          </div>
+          <div class="step reveal">
+            <div class="n">S2</div>
+            <h3>算差额</h3>
+            <p>逐笔与基线比对，仅取正向差额。</p>
+            <span class="who machine">机器</span>
+          </div>
+          <div class="step human-step reveal">
+            <div class="n">S3</div>
+            <h3>认归属</h3>
+            <p>这笔钱姓生活还是姓爱好，由本人认领。</p>
+            <span class="who human">人</span>
+          </div>
+          <div class="step reveal">
+            <div class="n">S4</div>
+            <h3>出视图</h3>
+            <p>总览页、明细标注、小组件持续呈现。</p>
+            <span class="who machine">机器</span>
+          </div>
+          <div class="step human-step reveal">
+            <div class="n">S5</div>
+            <h3>转决策</h3>
+            <p>给爱好设预算，省下的可自愿存进心愿。</p>
+            <span class="who human">人</span>
+          </div>
+        </div>
+
+        <div class="principles">
+          <article class="principle reveal">
+            <div class="ic"><svg><use href="#a-eye" /></svg></div>
+            <h3>只呈现，不审判</h3>
+            <p>绝不说「你花多了」，只说「这笔比你的基线高 19 元」。被指手画脚，是年轻人卸载财务类产品的首要原因。</p>
+          </article>
+          <article class="principle reveal">
+            <div class="ic"><svg><use href="#a-hand" /></svg></div>
+            <h3>辅助，不替代</h3>
+            <p>机器负责归类、计算与提醒，判断权始终归用户。任何一笔的归属都可以被手动改判，改了就生效。</p>
+          </article>
+          <article class="principle reveal">
+            <div class="ic"><svg><use href="#a-lock" /></svg></div>
+            <h3>隐私优先</h3>
+            <p>仅读取消费金额与类目，不读取聊天、通讯录与身份信息。数据只供本人查看，可随时撤销授权。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== FEATURES ============================== -->
+    <section class="sec white" id="features">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow blue">07 / 功能</div>
+          <h2 class="sec-title">五大模块，两条腿走路</h2>
+          <p class="lead">
+            ①–④ 回答：钱去哪了。⑤ 回答：钱可以变成什么。<br />
+            过去与未来，共用同一套基线语义 —— 浅蓝是生活，浅黄是选择。
+          </p>
+        </div>
+
+        <div class="bento">
+          <article class="feature big cool reveal">
+            <div class="no">01</div>
+            <h3>消费总览页</h3>
+            <p>本月总支出、分类占比、刚需 / 伪刚需两层结构，溢价率与月度趋势一页看清。</p>
+            <div class="art mini-bars">
+              <div class="row"><span>餐饮</span><span class="t"><i style="width: 83%"></i></span><span class="amt">¥1,000</span></div>
+              <div class="row"><span>日用</span><span class="t"><i style="width: 50%"></i></span><span class="amt">¥600</span></div>
+              <div class="row"><span>出行</span><span class="t"><i style="width: 33%"></i></span><span class="amt">¥400</span></div>
+            </div>
+          </article>
+
+          <article class="feature mid reveal">
+            <div class="no">02</div>
+            <h3>支出标注明细</h3>
+            <p>每笔自动标注刚需 / 非刚需，可一键改判，改了即生效。</p>
+            <div class="art">
+              <div class="mini-chat">
+                <div class="b">瑞幸咖啡 <b style="color:#b4832a">伪刚需</b> · 比基线高 ¥19</div>
+                <div class="b me" style="max-width: 70%">这笔算生活</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature mid reveal">
+            <div class="no">03</div>
+            <h3>备注页面</h3>
+            <p>为任意一笔补充上下文，解释权归人，机器不代判。</p>
+            <div class="art">
+              <div class="mini-chat">
+                <div class="b" style="max-width: 100%">「和同事吃饭，聊了很久」<br /><span style="color: var(--ink-4)">备注会参与后续归属判断</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature big warm reveal">
+            <div class="no">04</div>
+            <h3>AI 助手「平平」</h3>
+            <p>引导记录与确认，提醒累计，给正向反馈；也可以随时闲聊。它还会以气泡的形式蹲在每一页右下角，按「待机 / 交互」动作换姿势。</p>
+            <div class="art mini-chat">
+              <div class="b">本周餐饮占了 42%，两次外卖的单价在基线以上。<br />要不要看看具体是哪几笔？</div>
+              <div class="b me">好，帮我看看</div>
+            </div>
+          </article>
+
+          <article class="feature mid reveal" style="grid-column: span 4">
+            <div class="no">05</div>
+            <h3>心愿与存钱罐</h3>
+            <p>设一个用钱心愿与预计金额，把进度画出来。不设定额、不催促、可选择 —— 钱是慢慢满上去的，不是被要求满上去的。</p>
+            <div class="art" style="display: flex; gap: 26px; align-items: center; flex-wrap: wrap">
+              <div style="font-size: 34px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em">40%</div>
+              <div style="flex: 1; min-width: 160px">
+                <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: var(--ink-3); margin-bottom: 6px">
+                  <span>目标：明年换相机 · ¥8,000</span><span>已存 ¥3,200</span>
+                </div>
+                <div style="height: 10px; border-radius: 6px; background: #eef3f9; overflow: hidden">
+                  <div style="width: 40%; height: 100%; border-radius: 6px; background: linear-gradient(90deg,#a9cbf3,#57a6fe)"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== SCREENS ============================== -->
+    <section class="sec" id="screens">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow">08 / 界面</div>
+          <h2 class="sec-title">浅蓝是生活，浅黄是选择</h2>
+          <p class="lead">
+            界面里的每一根进度条、每一块颜色，都在回答同一个问题：这笔钱姓什么。<br />
+            下面四张图来自可交互原型 —— 每一页右下角都有平平，点一下就能聊。
+          </p>
+        </div>
+
+        <div class="screens">
+          <figure class="screen reveal">
+            <img src="assets/img/screen-home.webp" alt="首页" loading="lazy" />
+            <figcaption class="cap">首页<small>本月支出 · 两层结构 · 分类预算</small></figcaption>
+          </figure>
+          <figure class="screen reveal">
+            <img src="assets/img/screen-charts.webp" alt="统计" loading="lazy" />
+            <figcaption class="cap">统计<small>支出趋势 · 分类占比 · 周月切换</small></figcaption>
+          </figure>
+          <figure class="screen reveal">
+            <img src="assets/img/screen-ai.webp" alt="AI 助手" loading="lazy" />
+            <figcaption class="cap">AI 助手<small>平平 · 记账建议 · 数据卡片</small></figcaption>
+          </figure>
+          <figure class="screen reveal">
+            <img src="assets/img/screen-wish.webp" alt="心愿存钱罐" loading="lazy" />
+            <figcaption class="cap">心愿存钱罐<small>不设定额 · 不催促 · 可暂停</small></figcaption>
+          </figure>
+        </div>
+
+        <div class="reveal" style="display: flex; gap: 12px; justify-content: center; margin-top: 74px; flex-wrap: wrap">
+          <a class="btn blue" href="app.html">
+            打开 App 原型 · 试试记一笔
+            <svg><use href="#a-arrow" /></svg>
+          </a>
+          <a class="btn ghost" href="#ip">看看平平</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== IP ============================== -->
+    <section class="sec white" id="ip">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow blue">09 / 形象</div>
+          <h2 class="sec-title">企鹅「平平」</h2>
+          <p class="lead">
+            「平」取自基线，也代表平和记账、不焦虑。<br />
+            它只出现在三个地方：App 图标、App 内的 AI 助手、手机小组件 —— 不做营销主角。
+          </p>
+        </div>
+
+        <div class="ip-grid">
+          <div class="ip-stage reveal">
+            <img src="assets/img/penguin-3d-tall.png" alt="平平 3D 形象" id="ip-main" />
+            <div class="cap">分界线以上浅黄 ＝ 伪刚需；以下浅蓝 ＝ 刚需</div>
+          </div>
+
+          <div class="reveal">
+            <div class="ip-tabs" id="ip-tabs">
+              <button class="on" data-ip="3d">3D 毛绒版</button>
+              <button data-ip="flat">平面矢量版</button>
+            </div>
+
+            <div id="ip-3d">
+              <div class="faces">
+                <div class="face"><img src="assets/img/avatar3d-happy.png" alt="" /><span>开心</span></div>
+                <div class="face"><img src="assets/img/avatar3d-sad.png" alt="" /><span>伤心</span></div>
+                <div class="face"><img src="assets/img/avatar3d-calm.png" alt="" /><span>平静</span></div>
+                <div class="face"><img src="assets/img/avatar3d-love.png" alt="" /><span>喜爱</span></div>
+                <div class="face"><img src="assets/img/avatar3d-surprise.png" alt="" /><span>惊讶</span></div>
+              </div>
+              <div class="ip-sheets">
+                <figure>
+                  <img src="assets/img/penguin-3d-turntable.webp" alt="平平 3D 三视图" loading="lazy" />
+                  <figcaption>三视图 · 正面 / 侧面 / 背面</figcaption>
+                </figure>
+                <figure>
+                  <img src="assets/img/penguin-3d-faces.webp" alt="平平 3D 表情库" loading="lazy" />
+                  <figcaption>表情库 · 5 种核心情绪</figcaption>
+                </figure>
+                <figure class="wide">
+                  <img src="assets/img/penguin-3d-idle.webp" alt="平平待机动作关键帧" loading="lazy" />
+                  <figcaption>待机动作 · 记录 / 喝咖啡 / 看账本</figcaption>
+                </figure>
+                <figure class="wide">
+                  <img src="assets/img/penguin-3d-interaction.webp" alt="平平交互动作关键帧" loading="lazy" />
+                  <figcaption>交互动作 · 唤醒 / 展示数据</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div id="ip-flat" hidden>
+              <div class="ip-sheets">
+                <figure>
+                  <img src="assets/img/penguin-flat-turntable.webp" alt="平平平面三视图" loading="lazy" />
+                  <figcaption>平面三视图 · App UI / 图标</figcaption>
+                </figure>
+                <figure>
+                  <img src="assets/img/penguin-flat-faces-sheet.webp" alt="平平平面表情库" loading="lazy" />
+                  <figcaption>平面表情库 · 5 种情绪</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="ip-notes">
+              <div class="ip-note">
+                <span class="k">为什么</span>
+                <span><b>黑背白腹天然形成一条水平分界线</b>，不需要任何道具，就承载了「劈成两层」的叙事。</span>
+              </div>
+              <div class="ip-note">
+                <span class="k">配色</span>
+                <span>头部蓝黑略深，传递稳重；身体由上至下渐变到白蓝，呼应「刚需＝浅蓝」的理性底色；<b>浅蓝三角巾</b>是品牌色记忆点。</span>
+              </div>
+              <div class="ip-note">
+                <span class="k">动作</span>
+                <span>待机（记录 / 喝咖啡 / 看账本）与交互（唤醒 / 展示数据）两套关键帧，用于助手与小组件状态。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== WIDGETS ============================== -->
+    <section class="sec" id="widgets">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow">10 / 小组件</div>
+          <h2 class="sec-title">抬眼可见，点开即达</h2>
+          <p class="lead">
+            显示什么、显示给谁看、何时更新，都由你决定 ——<br />
+            甚至可以只显示结构与比例，把具体金额藏起来。
+          </p>
+        </div>
+
+        <div class="widget-desk reveal">
+          <div class="widgets">
+            <div class="widget w-small">
+              <div class="hd"><img src="assets/img/logo-lockup.png" alt="basely" /></div>
+              <div class="big">¥86<small>今日</small></div>
+              <div class="line"><span>本月</span><b>¥1,432</b></div>
+              <div class="latest">
+                <img src="assets/img/cat-food.png" alt="" />
+                <span>咖啡 · 非刚需</span>
+                <span class="amt">¥32</span>
+              </div>
+            </div>
+
+            <div class="widget w-mid">
+              <div class="hd">
+                <span class="ic"><svg><use href="#a-cal" /></svg></span>
+                本月总览 · 10月1日 – 10月31日
+              </div>
+              <div class="big">¥1,432</div>
+              <div class="line"><span>刚需 · 基础消费</span><b>¥1,070 · 75%</b></div>
+              <div class="track"><i style="width: 75%"></i></div>
+              <div class="line"><span>伪刚需 · 爱好溢价</span><b>¥362 · 25%</b></div>
+              <div class="track"><i class="y" style="width: 25%"></i></div>
+              <div class="latest">
+                <img src="assets/img/cat-food.png" alt="" />
+                <span>最新：咖啡 · 非刚需 · 基线以上 ¥19</span>
+              </div>
+            </div>
+
+            <div class="widget w-priv">
+              <div class="hd"><svg width="12" height="12"><use href="#a-lock" /></svg> 隐私模式</div>
+              <div class="big">75%<small>只显示结构</small></div>
+              <div class="line"><span>刚需</span><b>75%</b></div>
+              <div class="track"><i style="width: 75%"></i></div>
+              <div class="line"><span>伪刚需</span><b>25%</b></div>
+              <div class="track"><i class="y" style="width: 25%"></i></div>
+              <div class="latest"><span>金额已隐藏，只看比例</span></div>
+            </div>
+          </div>
+          <img class="desk-peng" src="assets/img/penguin-3d-front.png" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== POSTERS ============================== -->
+    <section class="sec white" id="posters">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow blue">11 / 海报</div>
+          <h2 class="sec-title">宣发系列 · 六张</h2>
+          <p class="lead">从「伪刚需分层」到「心愿存钱罐」，一条主张被拆成六次陈述。点击任意一张可放大。</p>
+        </div>
+        <div class="posters" id="posters-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============================== BRAND ============================== -->
+    <section class="sec" id="brand">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow">12 / 品牌</div>
+          <h2 class="sec-title">一套语言，两条腿</h2>
+          <p class="lead">
+            标志、图标、IP 与界面共用同一组颜色与同一条基线。<br />
+            浅蓝代表生活，浅黄代表选择 —— 从图标准确到海报，口径一致。
+          </p>
+        </div>
+
+        <div class="brand-grid">
+          <div class="brand-card logo-card reveal">
+            <img class="lock" src="assets/img/logo-lockup.png" alt="basely 图文标志" />
+            <div>
+              <div style="font-size: 13.5px; font-weight: 700; color: var(--navy)">图文标志</div>
+              <div class="small" style="max-width: 380px; margin-top: 6px">
+                企鹅「平平」＋ 小写字母标 basely。单色深蓝，适用于浅底；深底请使用反白版本。
+              </div>
+            </div>
+          </div>
+
+          <div class="brand-card reveal">
+            <div class="icon-card">
+              <img src="assets/img/app-icon.png" alt="App 图标" />
+              <div>
+                <div class="t">App 图标</div>
+                <div class="d">上半浅黄、下半浅蓝，一条分界线穿过画面。<br />图标内元素即为全案的两层语义。</div>
+              </div>
+            </div>
+            <div style="margin-top: 26px">
+              <h3>品牌色</h3>
+              <div class="swatches">
+                <div class="sw"><i style="background: #24396b"></i><span><b>#24396B</b>深海蓝 · 主色</span></div>
+                <div class="sw"><i style="background: #57a6fe"></i><span><b>#57A6FE</b>刚需蓝 · 强调</span></div>
+                <div class="sw"><i style="background: #fed984"></i><span><b>#FED984</b>溢价黄 · 提示</span></div>
+                <div class="sw"><i style="background: #fbf8f1"></i><span><b>#FBF8F1</b>奶油底 · 背景</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CTA ============================== -->
+    <section class="cta">
+      <div class="wrap">
+        <h2>为生活付费，<br />为<span>热爱</span>认账。</h2>
+        <div class="acts">
+          <a class="btn primary" href="app.html">
+            打开 App 原型
+            <svg><use href="#a-arrow" /></svg>
+          </a>
+          <a class="btn ghost" href="#top">回到顶部</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== FOOTER ============================== -->
+    <footer class="footer">
+      <div class="wrap">
+        <div class="top">
+          <div style="max-width: 340px">
+            <img class="flogo" src="assets/img/logo-lockup-white.png" alt="basely" />
+            <p style="font-size: 12.5px; line-height: 1.9; margin-top: 16px">
+              基线 Basely —— 一款辅助记账的 App。<br />
+              不劝你省钱，只让你看清钱去了哪。
+            </p>
+          </div>
+          <div class="cols">
+            <div class="col">
+              <h4>产品</h4>
+              <a href="app.html#home">首页总览</a>
+              <a href="app.html#records">账单明细</a>
+              <a href="app.html#charts">统计分析</a>
+              <a href="app.html#wish">心愿存钱罐</a>
+            </div>
+            <div class="col">
+              <h4>设计</h4>
+              <a href="#problem">问题定义</a>
+              <a href="#algorithm">计算口径</a>
+              <a href="#ip">IP 形象</a>
+              <a href="#posters">宣发海报</a>
+            </div>
+            <div class="col">
+              <h4>关于</h4>
+              <a href="#brand">品牌规范</a>
+              <a href="#widgets">小组件</a>
+              <a href="#top">回到顶部</a>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <span>© 2024 Basely 基线 · 课程作业，数据与视觉均为模拟示意</span>
+          <span>为生活付费，为热爱认账。</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- lightbox -->
+    <div class="lightbox" id="lightbox">
+      <button class="lb-btn lb-prev" id="lb-prev" aria-label="上一张"><svg><use href="#a-chev-left" /></svg></button>
+      <img id="lb-img" src="" alt="" />
+      <button class="lb-btn lb-next" id="lb-next" aria-label="下一张"><svg><use href="#a-chev-right" /></svg></button>
+      <button class="lb-close" id="lb-close" aria-label="关闭"><svg><use href="#a-close" /></svg></button>
+      <div class="lb-count" id="lb-count"></div>
+    </div>
+
+    <script src="assets/js/site.js?v=6"></script>
+  </body>
+</html>
