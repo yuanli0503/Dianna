@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
     <title>basely 体验版</title>
     <meta name="description" content="基线 Basely —— 一款把日常开销劈成两层的辅助记账 App。为生活付费，为热爱认账。" />
-    <link rel="icon" href="assets/img/favicon.png" />
-    <link rel="apple-touch-icon" href="assets/img/app-icon-180.png" />
-    <link rel="stylesheet" href="assets/css/tokens.css?v=13" />
-    <link rel="stylesheet" href="assets/css/app.css?v=13" />
-    <link rel="stylesheet" href="assets/css/mobile.css?v=1" />
-  <link rel="stylesheet" href="assets/css/demo.css?v=1" />
+    <link rel="icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="app-icon-180.png" />
+    <link rel="stylesheet" href="tokens.css?v=13" />
+    <link rel="stylesheet" href="app.css?v=13" />
+    <link rel="stylesheet" href="mobile.css?v=1" />
+  <link rel="stylesheet" href="demo.css?v=1" />
   </head>
   <body class="app-page">
     <!-- ============================== icon sprite ============================== -->
@@ -64,7 +64,7 @@
     <div class="stage-wrap">
       <div class="stage" id="stage">
       <aside class="stage-side">
-        <img class="side-logo" src="assets/img/logo-lockup.png" alt="basely" />
+        <img class="side-logo" src="logo-lockup.png" alt="basely" />
         <h1>把账单劈成两层<br />看清钱去了哪。</h1>
         <p>
           这是一份可直接操作的产品原型：记一笔、改判归属、看周月分析、跟平平聊聊，数字会实时更新。
@@ -97,7 +97,7 @@
               <!-- ============================ 首页 ============================ -->
               <section class="view active" id="v-home" data-view="home">
                 <div class="app-head">
-                  <img class="logo" src="assets/img/logo-lockup.png" alt="basely" />
+                  <img class="logo" src="logo-lockup.png" alt="basely" />
                   <div class="head-actions">
                     <button class="icon-btn" data-act="toast" data-msg="暂无新提醒，平平会替你盯着预算 🙂">
                       <svg><use href="#i-bell" /></svg>
@@ -139,7 +139,7 @@
                   <div class="card budget-card" id="home-budgets"></div>
 
                   <div class="card ai-card" style="margin-top: 12px">
-                    <div class="ava"><img src="assets/img/avatar-flat.png" alt="" /></div>
+                    <div class="ava"><img src="avatar-flat.png" alt="" /></div>
                     <div class="txt">
                       <div class="t">平平 · 你的 AI 记账助手</div>
                       <div class="d" id="ai-tip">本月餐饮支出比基线高 33% 哦～ 继续加油！</div>
@@ -286,7 +286,7 @@
                           较上周 <span id="ch-delta" style="color: #3aa269; font-weight: 600">↓ 8.4%</span>
                         </div>
                       </div>
-                      <img src="assets/img/penguin-flat-front.png" alt="" style="width: 58px; margin-top: -4px" />
+                      <img src="penguin-flat-front.png" alt="" style="width: 58px; margin-top: -4px" />
                     </div>
                     <div class="stack-bar" style="margin-top: 10px"><i class="need" id="ch-need" style="width: 70%"></i><i class="want" id="ch-want" style="width: 30%"></i></div>
                     <div class="legend" style="justify-content: space-between; margin-top: 8px">
@@ -309,7 +309,7 @@
                   </div>
 
                   <div class="comment-card">
-                    <img src="assets/img/penguin-face-calm.png" alt="" />
+                    <img src="penguin-face-calm.png" alt="" />
                     <div class="b" id="ch-comment">
                       <div class="nm">平平：</div>
                       本周餐饮占了 <b>42%</b>，伪刚需部分主要来自两次外卖。
@@ -325,7 +325,7 @@
                     <button class="nav-btn" data-act="back"><svg><use href="#i-chevron-left" /></svg></button>
                     <div style="display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center">
                       <div style="width: 30px; height: 30px; border-radius: 50%; overflow: hidden; background: #fff">
-                        <img src="assets/img/avatar-flat.png" alt="" style="width: 100%; height: 100%; object-fit: cover" />
+                        <img src="avatar-flat.png" alt="" style="width: 100%; height: 100%; object-fit: cover" />
                       </div>
                       <div style="line-height: 1.2">
                         <div style="font-size: 14px; font-weight: 700; color: var(--navy)">AI 助手</div>
@@ -356,7 +356,7 @@
                   <button class="nav-btn" data-go="settings"><svg><use href="#i-settings" /></svg></button>
                 </div>
                 <div class="profile-head">
-                  <div class="ava"><img src="assets/img/avatar-flat.png" alt="" /></div>
+                  <div class="ava"><img src="avatar-flat.png" alt="" /></div>
                   <div>
                     <div class="nm">平平的主人</div>
                     <span class="lv"><svg width="10" height="10"><use href="#i-star" /></svg> Lv3 记账达人</span>
@@ -383,21 +383,21 @@
                   <div class="sec-head"><h3>本月预算</h3><span class="more">剩余 33%</span></div>
                   <div class="card" style="padding: 2px 16px">
                     <div class="budget-row">
-                      <img class="cat-icon" src="assets/img/cat-food.png" alt="" />
+                      <img class="cat-icon" src="cat-food.png" alt="" />
                       <div class="info">
                         <div class="t"><span>餐饮</span><b>¥1,000 / ¥1,200</b></div>
                         <div class="mini-bar"><i style="width: 83%"></i></div>
                       </div>
                     </div>
                     <div class="budget-row">
-                      <img class="cat-icon" src="assets/img/cat-shopping.png" alt="" />
+                      <img class="cat-icon" src="cat-shopping.png" alt="" />
                       <div class="info">
                         <div class="t"><span>购物</span><b>¥0 / ¥900</b></div>
                         <div class="mini-bar"><i style="width: 2%"></i></div>
                       </div>
                     </div>
                     <div class="budget-row">
-                      <img class="cat-icon" src="assets/img/cat-transport.png" alt="" />
+                      <img class="cat-icon" src="cat-transport.png" alt="" />
                       <div class="info">
                         <div class="t"><span>出行</span><b>¥400 / ¥600</b></div>
                         <div class="mini-bar"><i style="width: 66%"></i></div>
@@ -450,7 +450,7 @@
                 <div class="pad">
                   <div class="card" style="padding: 12px; display: flex; align-items: center; gap: 10px">
                     <div style="width: 42px; height: 42px; border-radius: 50%; overflow: hidden; background: #f2f7fd">
-                      <img src="assets/img/avatar-flat.png" alt="" style="width: 100%; height: 100%; object-fit: cover" />
+                      <img src="avatar-flat.png" alt="" style="width: 100%; height: 100%; object-fit: cover" />
                     </div>
                     <div>
                       <div style="font-size: 14px; font-weight: 700; color: var(--navy)">平平的主人</div>
@@ -506,7 +506,7 @@
                 <div class="pad">
                   <div class="banner">
                     <div class="glow"></div>
-                    <img src="assets/img/penguin-3d-tall.png" alt="平平" />
+                    <img src="penguin-3d-tall.png" alt="平平" />
                     <div class="ribbon">记账小能手</div>
                     <div class="cap">已连续记账 7 天<br />再坚持 23 天解锁下一个徽章</div>
                   </div>
@@ -537,7 +537,7 @@
                   <div class="sec-head"><h3>温柔提醒</h3></div>
                   <div class="remind">
                     <div class="tx">今天的奶茶很好喝，但下次可以先记账哦～<br />你的每一笔支出，都值得被认真对待。</div>
-                    <img src="assets/img/penguin-face-love.png" alt="" />
+                    <img src="penguin-face-love.png" alt="" />
                   </div>
                 </div>
               </section>
@@ -555,7 +555,7 @@
                     <div class="big">¥3,000</div>
                     <div class="bar"><i style="width: 67%"></i></div>
                     <div class="foot"><span>¥2,000 / ¥3,000</span><span>剩余 ¥1,000</span></div>
-                    <div class="peng"><img src="assets/img/pos-act-rest.webp" alt="" /></div>
+                    <div class="peng"><img src="pos-act-rest.webp" alt="" /></div>
                   </div>
 
                   <div class="stat3">
@@ -568,7 +568,7 @@
                   <div class="card" style="padding: 6px 16px 12px" id="plan-rows"></div>
 
                   <div class="comment-card" style="margin-top: 12px">
-                    <img src="assets/img/penguin-face-happy.png" alt="" />
+                    <img src="penguin-face-happy.png" alt="" />
                     <div class="b">
                       <div class="nm">平平：</div>
                       本月很稳！<br />伪刚需占比 <b>25.3%</b>，比上月下降 3.2%，继续保持哦～
@@ -588,7 +588,7 @@
                 </div>
                 <div class="pad">
                   <div style="display: flex; gap: 10px; align-items: center; background: linear-gradient(120deg, #fffdf6, #fff6e2); border: 1px solid rgba(247, 199, 92, 0.35); border-radius: 18px; padding: 12px">
-                    <img src="assets/img/penguin-face-happy.png" alt="" style="width: 46px; height: 46px; border-radius: 50%; flex: none" />
+                    <img src="penguin-face-happy.png" alt="" style="width: 46px; height: 46px; border-radius: 50%; flex: none" />
                     <div style="font-size: 11.5px; color: #9a6b18; line-height: 1.7">
                       合理分配预算，让每一分钱都更有价值～<br />
                       <span style="opacity: 0.75">超限只提示，不拦截。</span>
@@ -792,7 +792,7 @@
             <button class="mascot" id="mascot" aria-label="和平平聊聊">
               <span class="mascot-halo"></span>
               <span class="mascot-tip" id="mascot-tip"></span>
-              <img id="mascot-img" src="assets/img/pos-act-rest.webp" alt="平平" />
+              <img id="mascot-img" src="pos-act-rest.webp" alt="平平" />
             </button>
 
             <!-- ============================ tab bar ============================ -->
@@ -825,9 +825,9 @@
   </script>
 
 
-    <script src="assets/js/data.js?v=13"></script>
-    <script src="assets/js/app.js?v=13"></script>
-  <script src="assets/js/demo.js?v=1"></script>
+    <script src="data.js?v=13"></script>
+    <script src="app.js?v=13"></script>
+  <script src="demo.js?v=1"></script>
   <script>
     (function () {
       var BASE_W = 390, BASE_H = 844;

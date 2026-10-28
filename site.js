@@ -102,20 +102,20 @@
         $("#ip-3d").hidden = !is3d;
         $("#ip-flat").hidden = is3d;
         $("#ip-main").src = is3d
-          ? "assets/img/penguin-3d-tall.png"
-          : "assets/img/penguin-flat-front.png";
+          ? "penguin-3d-tall.png"
+          : "penguin-flat-front.png";
       });
     });
   }
 
   /* ---------------------------------------------------------------- posters */
   var POSTERS = [
-    { src: "assets/img/poster-1.jpg", t: "伪刚需分层 · 它占了 25.3%" },
-    { src: "assets/img/poster-2.jpg", t: "小额高频 · 62 笔小钱" },
-    { src: "assets/img/poster-3.jpg", t: "人机分工 · 机器算，人判断" },
-    { src: "assets/img/poster-4.jpg", t: "不用你记 · 复用已有账单" },
-    { src: "assets/img/poster-5.jpg", t: "AI 周报 · 每周一次复盘" },
-    { src: "assets/img/poster-6.jpg", t: "心愿存钱罐 · 钱慢慢满上去" }
+    { src: "poster-1.jpg", t: "伪刚需分层 · 它占了 25.3%" },
+    { src: "poster-2.jpg", t: "小额高频 · 62 笔小钱" },
+    { src: "poster-3.jpg", t: "人机分工 · 机器算，人判断" },
+    { src: "poster-4.jpg", t: "不用你记 · 复用已有账单" },
+    { src: "poster-5.jpg", t: "AI 周报 · 每周一次复盘" },
+    { src: "poster-6.jpg", t: "心愿存钱罐 · 钱慢慢满上去" }
   ];
   var grid = $("#posters-grid");
   if (grid) {

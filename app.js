@@ -137,7 +137,7 @@
     var m = $("#mascot");
     if (!m) return;
     var pose = POSES[view] || "pos-act-rest";
-    $("#mascot-img").src = "assets/img/" + pose + ".webp";
+    $("#mascot-img").src = "" + pose + ".webp";
     m.setAttribute("data-pose", pose);
     m.classList.remove("cheer");
     // 交互动作：切换页面时用「过渡状态」挥一下
@@ -293,7 +293,7 @@
       var ratio = Math.min(100, Math.round(pct(used, c.budget)));
       return (
         '<div class="budget-row" data-go="budget" style="cursor:pointer">' +
-        '<img class="cat-icon" src="assets/img/' + c.icon + '" alt="" />' +
+        '<img class="cat-icon" src="' + c.icon + '" alt="" />' +
         '<div class="info">' +
         '<div class="t"><span>' + c.name + "</span><b>" + yuan(used) + "</b></div>" +
         '<div class="s">已用 ' + ratio + "% · 剩余 " + (100 - ratio) + "%</div>" +
@@ -314,7 +314,7 @@
     var want = isWant(r);
     return (
       '<button class="rec-item" data-rec="' + r.id + '">' +
-      '<img class="cat-icon" src="assets/img/' + c.icon + '" alt="" />' +
+      '<img class="cat-icon" src="' + c.icon + '" alt="" />' +
       '<div class="mid"><div class="t">' + r.title +
       (want ? '<span class="tag want">伪刚需</span>' : '<span class="tag need">刚需</span>') +
       '</div><div class="s"><span>' + r.place + "</span><span>" + r.time + "</span></div></div>" +
@@ -368,7 +368,7 @@
     var sheet = $("#sheet");
     sheet.innerHTML =
       '<div class="grab"></div>' +
-      '<div class="detail-amt"><img src="assets/img/' + c.icon + '" alt="" style="width:46px;margin:0 auto 6px" />' +
+      '<div class="detail-amt"><img src="' + c.icon + '" alt="" style="width:46px;margin:0 auto 6px" />' +
       '<div class="t">' + r.title + " · " + r.place + "</div>" +
       '<div class="v">-' + yuan(r.amount) + "</div>" +
       '<div style="font-size:11px;color:var(--ink-3)">' + mmdd(r.date) + " " + r.time + " · 微信钱包</div></div>" +
@@ -422,7 +422,7 @@
       var p = a ? pct(a, total) : 0;
       return (
         '<div class="cat-cell ' + (a ? "" : "empty") + '">' +
-        '<img src="assets/img/' + c.icon + '" alt="" />' +
+        '<img src="' + c.icon + '" alt="" />' +
         '<div class="n">' + c.name + "</div>" +
         '<div class="a">' + (a ? yuan(a) : "¥0") + "</div>" +
         '<div class="p">' + (a ? p.toFixed(1) + "%" : "未记账") + "</div>" +
@@ -596,7 +596,7 @@
       var p = pct(used, c.budget);
       return (
         '<div class="budget-row" style="padding:12px 0">' +
-        '<img class="cat-icon" src="assets/img/' + c.icon + '" alt="" />' +
+        '<img class="cat-icon" src="' + c.icon + '" alt="" />' +
         '<div class="info"><div class="t"><span>' + c.name + "</span><b>" + yuan(used) + "</b></div>" +
         '<div class="s">预算 ' + yuan(c.budget) + " · 占本月 " + Math.round(pct(used, total)) + "%</div>" +
         '<div class="mini-bar"><i class="' + (p > 90 ? "warn" : "") + '" style="width:' + Math.min(100, p) + '%"></i></div>' +
@@ -633,7 +633,7 @@
     $("#add-cats").innerHTML = B.categories.map(function (c) {
       return (
         '<button class="add-cat ' + (c.id === state.add.cat ? "on" : "") + '" data-cat="' + c.id + '">' +
-        '<img src="assets/img/' + c.icon + '" alt="" /><span>' + c.name + "</span></button>"
+        '<img src="' + c.icon + '" alt="" /><span>' + c.name + "</span></button>"
       );
     }).join("");
   }
@@ -812,7 +812,7 @@
     var el = document.createElement("div");
     el.className = "msg " + (who === "me" ? "me" : "");
     el.innerHTML =
-      (who === "ai" ? '<div class="ava"><img src="assets/img/avatar-flat.png" alt=""></div>' : "") +
+      (who === "ai" ? '<div class="ava"><img src="avatar-flat.png" alt=""></div>' : "") +
       '<div class="col"><div class="bubble">' + html + '</div><div class="msg-time">' + nowTime() + "</div></div>";
     $("#chat-scroll").appendChild(el);
     $("#chat-scroll").scrollTop = $("#chat-scroll").scrollHeight;
@@ -821,7 +821,7 @@
   function showTyping() {
     var el = document.createElement("div");
     el.className = "msg";
-    el.innerHTML = '<div class="ava"><img src="assets/img/avatar-flat.png" alt=""></div>' +
+    el.innerHTML = '<div class="ava"><img src="avatar-flat.png" alt=""></div>' +
       '<div class="col"><div class="bubble"><span class="typing"><i></i><i></i><i></i></span></div></div>';
     $("#chat-scroll").appendChild(el);
     $("#chat-scroll").scrollTop = $("#chat-scroll").scrollHeight;
@@ -1147,7 +1147,7 @@
     if (!state.wishes.length) {
       box.innerHTML =
         '<div class="wish-empty">' +
-        '<img class="we-img" src="assets/img/pos-idle-note.webp" alt="" />' +
+        '<img class="we-img" src="pos-idle-note.webp" alt="" />' +
         '<div class="we-t">还没有心愿</div>' +
         '<p class="we-d">开始写下你的第一个心愿吧~</p>' +
         '<button class="we-btn" data-act="wish-new">写下第一个心愿</button>' +

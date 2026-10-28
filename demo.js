@@ -12,15 +12,15 @@
   var DEFAULTS = {
     name: "平平的主人",
     quote: "记录每一笔\n都是更好的自己！",
-    avatar: "assets/img/avatar-flat.png"
+    avatar: "avatar-flat.png"
   };
 
   var AVATARS = [
-    "assets/img/avatar-flat.png",
-    "assets/img/avatar3d-happy.png",
-    "assets/img/avatar3d-love.png",
-    "assets/img/avatar3d-calm.png",
-    "assets/img/avatar3d-surprise.png"
+    "avatar-flat.png",
+    "avatar3d-happy.png",
+    "avatar3d-love.png",
+    "avatar3d-calm.png",
+    "avatar3d-surprise.png"
   ];
 
   function loadProfile() {
@@ -340,7 +340,7 @@
       '<div class="tour-hit"></div>' +
       '<div class="tour-card">' +
       '<div class="row">' +
-      '<div class="pv"><img src="assets/img/avatar-flat.png" alt="" /></div>' +
+      '<div class="pv"><img src="avatar-flat.png" alt="" /></div>' +
       '<div class="tx"><div class="t"></div><div class="d"></div></div>' +
       "</div>" +
       '<div class="dots"></div>' +
